@@ -1,6 +1,7 @@
 # Fix SLIP tool
 Using https://earthexplorer.usgs.gov/ > Data Sets > Digital Elevation > ASTER GLOBAL DEM, download tiles.
 Unzip tiles on the server in */original_data/* folder.
+Unzip tiles on the server in */original_data/* folder.
 ```
 cd ~/Datacube/agdc-v2
 source ~/Datacube/datacube_env/bin/activate
