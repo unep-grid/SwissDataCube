@@ -1,2 +1,2 @@
-# Changing maks option
+# Changing mask option
 izgizu
