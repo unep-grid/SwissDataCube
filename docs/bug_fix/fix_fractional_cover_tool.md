@@ -6,6 +6,6 @@ end_members = np.loadtxt(
 ```
 If the change is not effective:
 ```
->sudo /etc/init.d/data_cube_ui restart
->sudo /etc/init.d/celerybeat restart
+> sudo /etc/init.d/data_cube_ui restart
+> sudo /etc/init.d/celerybeat restart
 ```
