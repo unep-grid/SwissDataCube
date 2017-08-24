@@ -25,11 +25,11 @@ Plus d&#39;info: https://doc.ubuntu-fr.org/tmux
 
 ### a - Clean Data Base (drop schema)**
 
-```cd /usr/lib/postgresql/9.5/bin*```
-
-Be careful next command delete everything in your Cube!! (except data stored in Django db [schema public])
-
-#### psql -d datacube -U postgres -c &#39;DROP SCHEMA agdc CASCADE;&#39;
+```
+cd /usr/lib/postgresql/9.5/bin*
+# Be careful next command delete everything in your Cube!! (except data stored in Django db [schema public])
+psql -d datacube -U postgres -c &#39;DROP SCHEMA agdc CASCADE;&#39;
+```
 
 ### b - generate data base (new schema)**
 
