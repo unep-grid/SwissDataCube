@@ -5,7 +5,6 @@
 [Changing pre-collection mask options](customization/changing_pre-collection_mask_options.md)
 
 [Fix fractional cover tool](customization/fix_fractional_cover_tool.md)
-
 [Create and ingest a new product](customization/create _and_ingest_new_product.md)
 
 ## bug fix
