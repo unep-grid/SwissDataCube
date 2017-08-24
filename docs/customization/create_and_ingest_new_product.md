@@ -15,7 +15,7 @@ metadata:
     platform:
         code: LANDSAT_7_C1
 ```
-* Adapt and place *ls7_C1_sr_ch.yaml* in */home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs*
+* Adapt and place *ls7_C1_sr_switzerland.yaml* in */home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs*
 * Adapt and place *usgs_ls_ard_C1_prepare.py* in *.../agdc-v2/ingest/prepare_scripts*
 * Transfer downloaded *tar.gz* to */datacube/scenes*
 * Unzip them to */datacube/original_data*
@@ -26,7 +26,7 @@ source ~/Datacube/datacube_env/bin/activate
 datacube product add ingest/dataset_types/ls7_C1_sr_scene.yaml
 python /home/sdcuser/Datacube/agdc-v2/ingest/prepare_scripts/usgs_ls_ard_C1_prepare.py /datacube/original_data/*
 datacube dataset add /datacube/original_data/*/*.yaml --auto-match
-datacube -v ingest -c /home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs/ls7_C1_sr_ch.yaml
+datacube -v ingest -c /home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs/ls7_C1_sr_switzerland.yaml
 deactivate
 ```
 * Add your product in the datacube using the admin section
