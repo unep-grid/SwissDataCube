@@ -10,7 +10,6 @@
 ## TMUX
 
 **tmux** - créer une session
-
 **ctrl-b d** - sortir sans arrêter la session
 
 **tmux list-sessions** - lister les sessions tmux:
