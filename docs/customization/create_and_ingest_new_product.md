@@ -5,7 +5,7 @@
 
 * Download scenes faster using Firefox plugin DownThemAll
 
-* Adapt and place *ls7_C1_sr_scene.yaml* in */home/sdcuser/Datacube/agdc-v2/ingest/dataset_types*
+* Adapt and place *ls7_C1_sr_scene.yaml* in *.../agdc-v2/ingest/dataset_types*
 ```yaml
 name: ls7_C1_sr_scene
 description: Landsat 7 USGS Collection 1 Higher Level SR scene processed using LEDAPS. 30m UTM based projection.
@@ -15,7 +15,7 @@ metadata:
     platform:
         code: LANDSAT_7_C1
 ```
-* Adapt and place *ls7_C1_sr_switzerland.yaml* in */home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs*
+* Adapt and place *ls7_C1_sr_switzerland.yaml* in *.../agdc-v2/ingest/ingestion_configs*
 ```yaml
 source_type: ls7_C1_sr_scene
 output_type: ls7_C1_sr_swiss
