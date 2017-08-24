@@ -1,8 +1,7 @@
 # Documentation
 ## customization
 [Changing pre-collection mask options](customization/changing_pre-collection_mask_options.md)
-
-[xxx](customization/create _and_ingest_new_product.md)
+[Xxx](customization/changing_pre-collection_mask_options.md)
 
 [Remove "Don't have an account? Register here." from Login screen](customization/remove_dont_have_an_account.md)
 
