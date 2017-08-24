@@ -1,5 +1,7 @@
 # Documentation
 ## customization
+[Adapt scale to custom mosaic product](customization/adapt_scale_to_custom_mosaic_product.md)
+
 [Changing pre-collection mask options](customization/changing_pre-collection_mask_options.md)
 
 [Create and ingest a new product (e.g. Landsat 7 Collection 1)](customization/create_and_ingest_new_product.md)
