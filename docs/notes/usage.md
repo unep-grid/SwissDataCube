@@ -1,15 +1,11 @@
 # Usage
 ## Paths
 
-**GEOTIFFS** #/datacube/original\_data/&lt;tile&gt;#
+**GEOTIFFS** */datacube/original\_data/&lt;tile&gt;*
 
-**OUTPUTS (NetCDF)**
+**OUTPUTS (NetCDF)** */datacube/ingested\_data/&lt;landsat sat ex: LC8\_OLI\_LEDAPS…&gt;*
 
-## /datacube/ingested\_data/&lt;landsat sat ex: LC8\_OLI\_LEDAPS…&gt;
-
-**Ingestion Scripts**
-
-## /home/sdcuser/Datacube/agdc-v2/ingest/ingestion\_configs
+**Ingestion Scripts** */home/sdcuser/Datacube/agdc-v2/ingest/ingestion\_configs*
 
 **TMUX**
 
