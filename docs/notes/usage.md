@@ -7,17 +7,17 @@
 
 **Ingestion Scripts** */home/sdcuser/Datacube/agdc-v2/ingest/ingestion\_configs*
 
-**TMUX**
+## TMUX
 
-**tmux**                                 - créer une session
+**tmux** - créer une session
 
-**ctrl-b d**                         - sortir sans arrêter la session
+**ctrl-b d** - sortir sans arrêter la session
 
-**tmux list-sessions**                 - lister les sessions tmux:
+**tmux list-sessions** - lister les sessions tmux:
 
-**tmux attach -t 0**                 - revenir à une session (attach le numero de session)
+**tmux attach -t #** - revenir à une session (attach le numero de session)
 
-**exit**                         - cloturer la session tmux
+**exit** - cloturer la session tmux
 
 Plus d&#39;info: https://doc.ubuntu-fr.org/tmux
 
