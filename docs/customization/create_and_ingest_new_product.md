@@ -62,6 +62,11 @@ storage:
           latitude: -0.000271312
 ```
 * Adapt and place *usgs_ls_ard_C1_prepare.py* in *.../agdc-v2/ingest/prepare_scripts*
+```python
+        'platform': {
+            'code': fields["satellite"] + '_C1'
+        },
+```
 * Transfer downloaded *tar.gz* to */datacube/scenes*
 * Unzip them to */datacube/original_data*
 * Then via ssh:
