@@ -81,4 +81,4 @@ deactivate
 ```
 * Add your product in the datacube using the admin section
 
-![](../media/admin_new_product.png)
+![](../media/admin_C1_product.png)
