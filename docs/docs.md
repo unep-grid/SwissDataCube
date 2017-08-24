@@ -2,7 +2,7 @@
 ## customization
 [Changing pre-collection mask options](customization/changing_pre-collection_mask_options.md)
 
-[Xxx](customization/changing_pre-collection_mask_options.md)
+[Create and ingest a new product (e.g. Landsat 7 Collection 1)](customization/changing_pre-collection_mask_options.md)
 
 [Remove "Don't have an account? Register here." from Login screen](customization/remove_dont_have_an_account.md)
 
