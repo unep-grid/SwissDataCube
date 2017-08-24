@@ -1,4 +1,9 @@
 # Documentation
+## bug fix
+[Fix fractional cover tool](bug_fix/fix_fractional_cover_tool.md)
+
+[Fix SLIP tool](bug_fix/fix_SLIP_tool.md)
+
 ## customization
 [Adapt scale to custom mosaic product](customization/adapt_scale_to_custom_mosaic_product.md)
 
@@ -8,7 +13,5 @@
 
 [Remove "Don't have an account? Register here." from Login screen](customization/remove_dont_have_an_account.md)
 
-## bug fix
-[Fix fractional cover tool](bug_fix/fix_fractional_cover_tool.md)
-
-[Fix SLIP tool](bug_fix/fix_SLIP_tool.md)
+## notes
+[Usage](notes/usage.md)
