@@ -1,12 +1,7 @@
-
-
 # Usage
+## Paths
 
-# **Paths**
-
-**GEO**** TIFFS**
-
-## /datacube/original\_data/&lt;tile&gt;
+**GEOTIFFS** #/datacube/original\_data/&lt;tile&gt;#
 
 **OUTPUTS (NetCDF)**
 
