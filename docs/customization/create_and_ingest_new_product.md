@@ -76,7 +76,7 @@ source ~/Datacube/datacube_env/bin/activate
 datacube product add ingest/dataset_types/ls7_C1_sr_scene.yaml
 python /home/sdcuser/Datacube/agdc-v2/ingest/prepare_scripts/usgs_ls_ard_C1_prepare.py /datacube/original_data/*
 datacube dataset add /datacube/original_data/*/*.yaml --auto-match
-datacube -v ingest -c /home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs/ls7_C1_sr_switzerland.yaml
+datacube -v ingest -c /home/sdcuser/Datacube/agdc-v2/ingest/ingestion_configs/ls7_C1_sr_switzerland.yaml --executor multiproc 2
 deactivate
 ```
 * Add your product in the datacube using the admin section
