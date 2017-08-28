@@ -77,7 +77,7 @@ This task is fast (less than a second per image)
 
 # **3 – Ingestion**
 
-#### datacube -v ingest -c /home/sdcuser/Datacube/agdc-v2/ingest/ingestion\_configs/ls7\_ledaps\_ch\_ll.yaml        NB run 3 times one per each ingestion file
+#### datacube -v ingest -c /home/sdcuser/Datacube/agdc-v2/ingest/ingestion\_configs/ls7\_ledaps\_ch\_ll.yaml --executor multiproc 2       NB run 3 times one per each ingestion file
 
 **Ingestion files are:**
 
