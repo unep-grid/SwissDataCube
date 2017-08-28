@@ -69,7 +69,7 @@ The data then needs to be prepared for ingestion: generation of metadata (YAML f
 
 #### cd ~/Datacube/agdc-v2
 
-#### datacube dataset add /datacube/original\_data/\*/\* --auto-match
+#### datacube dataset add /datacube/original\_data/\*/\*.yaml --auto-match
 
 This task is fast (less than a second per image)
 
