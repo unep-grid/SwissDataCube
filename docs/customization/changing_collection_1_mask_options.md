@@ -53,7 +53,7 @@ Or (not sure about which one to use)
 ```
 
 Then adapt the *create_cfmask_clean_mask* function in the appropriate task.py (in our case *data_cube_ui/apps/custom_mosaic_tool/tasl.py*):
-```python
-        clear_mask = create_cfmask_clean_mask(data.cf_mask) if 'cf_mask' in data else create_bit_mask(data.pixel_qa,
-                                                                                                      [1, 2, 4])
+```python clear_mask = create_cfmask_clean_mask(data.cf_mask) if 'cf_mask' in data else create_bit_mask(data.pixel_qa,
+                                                                                                            [1, 2, 4])
 ```
+Be careful as you can have several fucntion called several time in a single python script.
