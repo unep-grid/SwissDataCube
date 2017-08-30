@@ -30,30 +30,16 @@ Identify the bit values using the appropriate *yaml* in *agdc-v2/ingest/dataset_
             16384: Unused
             32786: Unused
 ```
-Or (not sure about which one to use)
-```yaml
-    - name: 'sr_cloud_qa'
-      aliases: [cloud_qa]
-      dtype: uint8
-      nodata: 0
-      units: 'bit_index'
-      flags_definition:
-        cloud_qa:
-          bits: [0,1,2,3,4,5,6,7]
-          description: SR Cloud QA
-          values:
-            1: Dark Dense Vegetation (DDV)
-            2: Cloud
-            4: Cloud shadow
-            8: Adjacent to cloud
-            16: Snow
-            32: Land/Water
-            64: Unused
-            128: Unused
-```
 
 Then adapt the *create_cfmask_clean_mask* function in the appropriate task.py (in our case *data_cube_ui/apps/custom_mosaic_tool/tasl.py*):
-```python clear_mask = create_cfmask_clean_mask(data.cf_mask) if 'cf_mask' in data else create_bit_mask(data.pixel_qa,
+```python
+clear_mask = create_cfmask_clean_mask(data.cf_mask) if 'cf_mask' in data else create_bit_mask(data.pixel_qa,
                                                                                                             [1, 2, 4])
 ```
 Be careful as you can have several fucntion called several time in a single python script.
+
+Another radical option is to bypass the *valid_bits* list in the script *data_cube_ui/utils/dc_utilities*:
+```python
+def create_bit_mask(data_array, valid_bits, no_data=-9999):
+    valid_bits = [1, 2, 4]
+```
