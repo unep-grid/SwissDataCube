@@ -43,3 +43,8 @@ Another radical option is to bypass the *valid_bits* list in the script *data_cu
 def create_bit_mask(data_array, valid_bits, no_data=-9999):
     valid_bits = [1, 2, 4]
 ```
+If the change is not effective, type:
+```
+sudo /etc/init.d/data_cube_ui restart
+sudo /etc/init.d/celerybeat restart
+```
