@@ -8,3 +8,4 @@ In *data_cube_ui/apps/accounts/templates/registration/login.html*, comment the p
 <a style="" href="{% url 'registration' %}">{% trans "Don't have an account? Register here." %}</a> -->
 {% endblock %}
 ```
+Finally rename the registration.py file
