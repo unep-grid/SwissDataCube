@@ -1,3 +1,5 @@
+# Number of Workers
+
 Depending the number of CPU and amount of RAM the number of parallel process has to be adapted.
 
 Thi operation can be done in /etc/default/data_cube_ui
