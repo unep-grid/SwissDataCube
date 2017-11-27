@@ -1,0 +1,9 @@
+Depending the number of CPU and amount of RAM the number of parallel process has to be adapted.
+
+Thi operation can be done in /etc/default/data_cube_ui
+
+Default value in place from CEOS is 10 workers:
+#CELERYD_OPTS="-c 10 -Ofair"
+
+Around 2Go is necessary by worker. For 50Go RAM for Swiss DC
+CELERYD_OPTS="-c 25 -Ofair"
