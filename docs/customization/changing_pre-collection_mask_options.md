@@ -1,5 +1,5 @@
 # Changing pre-collection mask options
-Adapt the clean_mask values in *data_cube_ui/utils/cd_utilities.py*
+Adapt the clean_mask values in *data_cube_ui/utils/dc_utilities.py*
 ```python
     #########################
     # cfmask values:        #
