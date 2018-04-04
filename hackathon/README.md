@@ -9,3 +9,15 @@ Info & registration: http://www.swissdatacube.org/index.php/2018/03/07/opengenev
 
 ## News 2 [April 4]
 The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April 12-13]
+
+## Swiss Data Cube Virtual Machine
+1. You need first to install Virtual Box: https://www.virtualbox.org
+2. Then download the SDC VM at: https://owncloud.unepgrid.ch/index.php/s/tsmakvA29MIx1UZ
+3. Import the downloaded OVA file in Virtual Box (Import Appliance)
+4. Download and mount the virtual data disk [available soon]
+
+The VM is a minimial installation with no data (just the OS, the UI, and the notebook server).
+Data are available on a separate virtual data disk which can be mounted to the VM.
+The VM is configured with 2 vCPUs and 2 GB RAM.
+username: localuser
+password: localuser1234
