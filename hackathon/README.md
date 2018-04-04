@@ -17,7 +17,9 @@ The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April
 4. Download and mount the virtual data disk [available soon]
 
 The VM is a minimial installation with no data (just the OS, the UI, and the notebook server).
+
 Data are available on a separate virtual data disk which can be mounted to the VM.
+
 The VM is configured with 2 vCPUs and 2 GB RAM.
-username: localuser
-password: localuser1234
+
+username: localuser/password: localuser1234
