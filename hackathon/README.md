@@ -1,7 +1,7 @@
 # SDC Hackathon 11-13 April 2018
 Info & registration: http://www.swissdatacube.org/index.php/2018/03/07/opengeneva-hackathon-sdc-sdg/
 
-##News 1 [April 3]
+## News 1 [April 3]
 1. We will start on Wednesday April 11 at 9:00. The event will finish on Friday April 13 at 17:00.
 2. The venue will be at the "Centre Universitaire d’Informatique”, 7 route de Drize, 1227 Carouge. You can find access information on the following page: http://cui.unige.ch/en/contact/planaccessglobal/
 3. We will have a dedicated GitHub repository available at: https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
