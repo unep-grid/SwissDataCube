@@ -23,3 +23,16 @@ Data are available on a separate virtual data disk which can be mounted to the V
 The VM is configured with 2 vCPUs and 2 GB RAM.
 
 username: localuser/password: localuser1234
+
+
+To start the User Interface (http://localhost:8000/), type the following command line:
+
+sudo service data_cube_ui restart 
+
+To start the Jupyter Notebook (http://localhost:8888), type the following command line:
+source ~/Datacube/datacube_env/bin/activate
+cd ~/Datacube/data_cube_notebooks/
+jupyter notebook
+Ctrl+Z
+bg
+deactivate
