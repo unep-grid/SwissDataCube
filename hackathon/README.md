@@ -6,3 +6,6 @@ Info & registration: http://www.swissdatacube.org/index.php/2018/03/07/opengenev
 2. The venue will be at the "Centre Universitaire d’Informatique”, 7 route de Drize, 1227 Carouge. You can find access information on the following page: http://cui.unige.ch/en/contact/planaccessglobal/
 3. We will have a dedicated GitHub repository available at: https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
 4. Currently, we are working with our NASA colleagues to prepare a Virtual Machine with all the necessary material to work with. As soon as it will be ready, we will send you the link to download and install it.
+
+## News 2 [April 4]
+The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April 12-13]
