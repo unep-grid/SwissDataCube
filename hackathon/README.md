@@ -7,8 +7,19 @@ Info & registration: http://www.swissdatacube.org/index.php/2018/03/07/opengenev
 3. We will have a dedicated GitHub repository available at: https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
 4. Currently, we are working with our NASA colleagues to prepare a Virtual Machine with all the necessary material to work with. As soon as it will be ready, we will send you the link to download and install it.
 
-## News 2 [April 4]
+## News 2 [April 6]
 The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April 12-13]
+
+1. We will start on Wednesday April 11 at 9:00. The event will finish on Friday April 13 at 17:00.
+2. The venue will be at the "Centre Universitaire d’Informatique”, 7 route de Drize, 1227 Carouge. You can find access information on the following page: http://cui.unige.ch/en/contact/planaccessglobal/
+3. Regarding Logistics, Organization & Schedule, all information can be found in the following document:
+	https://owncloud.unepgrid.ch/index.php/s/bRkAiVLuTiCvH3P
+4. Code repository: https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
+5. Document repository:  https://owncloud.unepgrid.ch/index.php/s/g7sxb0Obwu6cW7d 
+6. Project documentation (will be available early next week): http://swissdatacube.sparkboard.com 
+7. A Virtual Machine with all the necessary software is available. It should be installed before the hackathon! All instructions are available at:
+	https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
+8. A repository of useful scientific articles is available at: https://owncloud.unepgrid.ch/index.php/s/AEcywqhftORz5Fa
 
 ## Swiss Data Cube Virtual Machine
 1. You need first to install Virtual Box: https://www.virtualbox.org
