@@ -15,6 +15,10 @@ The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April
 2. Then download the SDC VM at: https://owncloud.unepgrid.ch/index.php/s/tsmakvA29MIx1UZ
 3. Import the downloaded OVA file in Virtual Box (Import Appliance)
 4. Download and mount the virtual data disk [available soon]
+5. In order to bypass firewall issue in Linux and Mac OS change the guest SSH port to 3022
+```
+Settings > Network > Advanced > Port Forwarding > Change SSH Host Port from 222 to 3022 > OK > OK
+```
 
 The VM is a minimial installation with no data (just the OS, the UI, and the notebook server).
 
@@ -24,6 +28,9 @@ The VM is configured with 2 vCPUs and 2 GB RAM.
 ```
 username: localuser/password: localuser1234
 ```
+Start the VM in Headless mode
+
+To
 
 To start the User Interface (http://localhost:8000/), type the following command line:
 ```
