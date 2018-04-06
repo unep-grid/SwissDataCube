@@ -30,7 +30,10 @@ username: localuser/password: localuser1234
 ```
 Start the VM in Headless mode
 
-To
+Connect to the VM using SSH (terminal or Putty) in order to allow copy/paste
+```
+ssh -p 3022 localuser@localhost
+```
 
 To start the User Interface (http://localhost:8000/), type the following command line:
 ```
