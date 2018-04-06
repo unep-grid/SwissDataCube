@@ -28,9 +28,9 @@ The VM is configured with 2 vCPUs and 2 GB RAM.
 ```
 username: localuser/password: localuser1234
 ```
-Start the VM in Headless mode
+Start the VM in Headless mode.
 
-Connect to the VM using SSH (terminal or Putty) in order to allow copy/paste
+Connect to the VM using SSH (terminal or Putty) in order to allow copy/paste.
 ```
 ssh -p 3022 localuser@localhost
 ```
@@ -54,4 +54,4 @@ tmux ls # to list the active tmux sessions (you should get something starting wi
 tmux attach -t dcNotebook # to enter the session you just closed
 exit # to stop and close the session you are in (it will interrupt all its processes)
 ```
-This way you can use a single terminal and jump in tmux sessions to see Jupyter Notebook activity
+This way you can use a single terminal and jump in tmux sessions to see Jupyter Notebook activity.
