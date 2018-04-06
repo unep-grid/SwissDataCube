@@ -47,9 +47,11 @@ cd /home/localuser/Datacube/data_cube_notebooks
 jupyter notebook
 ```
 tmux is a terminal multiplexer, allowing a user to access multiple separate terminal sessions inside a single terminal window or remote terminal session. It is useful for dealing with multiple programs from a command-line interface, and for separating programs from the Unix shell that started the program.
-Type the following commands to test how to interact with tmus sessions.
+Type the following commands to test how to interact with tmux sessions.
 ```
 Ctrl+b > d # to leave a session without stopping its process
 tmux ls # to list the active tmux sessions (you should get something starting with "dcNotebook: 1 windows (created ...")
-tmux attach -t dcNotebook # To enter the session you just closed
+tmux attach -t dcNotebook # to enter the session you just closed
+exit # to stop and close the session you are in (it will interrupt all its processes)
 ```
+This way you can use a single terminal and jump in tmux sessions to see Jupyter Notebook activity
