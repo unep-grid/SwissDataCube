@@ -41,10 +41,15 @@ sudo service data_cube_ui restart
 ```
 To start the Jupyter Notebook (http://localhost:8888), type the following command line:
 ```
-source ~/Datacube/datacube_env/bin/activate
-cd ~/Datacube/data_cube_notebooks/
+tmux new -s dcNotebook
+source /home/localuser/Datacube/datacube_env/bin/activate
+cd /home/localuser/Datacube/data_cube_notebooks
 jupyter notebook
-Ctrl+Z
-bg
-deactivate
+```
+tmux is a terminal multiplexer, allowing a user to access multiple separate terminal sessions inside a single terminal window or remote terminal session. It is useful for dealing with multiple programs from a command-line interface, and for separating programs from the Unix shell that started the program.
+Type the following commands to test how to interact with tmus sessions.
+```
+Ctrl+b > d # to leave a session without stopping its process
+tmux ls # to list the active tmux sessions (you should get something starting with "dcNotebook: 1 windows (created ...")
+tmux attach -t dcNotebook # To enter the session you just closed
 ```
