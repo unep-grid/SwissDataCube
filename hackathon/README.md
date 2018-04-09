@@ -21,6 +21,9 @@ The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April
 	https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
 8. A repository of useful scientific articles is available at: https://owncloud.unepgrid.ch/index.php/s/AEcywqhftORz5Fa
 
+## News 3 [April 9]
+Accomodation: Open Geneva Festival can offer free dormitory facilities in civil protection bunkers (with Internet access) each night between 11th and 16th of April 2018. The bunker is located in Meyrin, Geneve and there are 50 spots each night available on first-come-first-served basis. The registration for the accommodation service will be open on 10th of April 2018 at 12:00 at the following link: https://goo.gl/forms/ndchcoZ8DRGJIuFg1. P
+
 ## Swiss Data Cube Virtual Machine
 1. You need first to install Virtual Box: https://www.virtualbox.org
 2. Then download the SDC VM at: https://owncloud.unepgrid.ch/index.php/s/tsmakvA29MIx1UZ
