@@ -21,8 +21,24 @@ The rooms for our Hackathon will be the following 301-2 [April 11]; 322-3 [April
 	https://github.com/GRIDgva/SwissDataCube/tree/master/hackathon
 8. A repository of useful scientific articles is available at: https://owncloud.unepgrid.ch/index.php/s/AEcywqhftORz5Fa
 
-## News 3 [April 9]
-Accomodation: Open Geneva Festival can offer free dormitory facilities in civil protection bunkers (with Internet access) each night between 11th and 16th of April 2018. The bunker is located in Meyrin, Geneve and there are 50 spots each night available on first-come-first-served basis. The registration for the accommodation service will be open on 10th of April 2018 at 12:00 at the following link: https://goo.gl/forms/ndchcoZ8DRGJIuFg1. P
+## News 3 [April 10]
+We are really happy to welcome you tomorrow for the beginning of our hackathon.
+We will meet at 9:00 the Centre Universitaire d’Informatique (CUI) Battle - Building A, 7 route de Drize, 1227 Carouge.
+You can find further information on how to reach the Battelle Campus at: http://cui.unige.ch/en/contact/planaccessglobal/
+The room will be: 301-2 (third floor)
+
+To organise and document our work, we have set up a dedicated sparkboard. Please register at: https://swissdatacube.sparkboard.com
+
+Regarding the logistics:
+- food & beverage during the day (coffee break; lunch) are offered by the University of Geneva/CUI. Thanks to them
+- lunch will be served at the Battelle Campus Cafeteria
+- we will have a coffee machine and a boiler for teas and coffees
+- If you stay in the building to work over night, just be careful to inform the security (we will inform them)
+- Accomodation: Open Geneva Festival can offer free dormitory facilities in civil protection bunkers (with Internet access) each night between 11th and 16th of April 2018. The bunker is located in Meyrin, Geneve and there are 50 spots each night available on first-come-first-served basis. The registration for the accommodation service will be open on 10th of April 2018 at 12:00 at the following link: https://goo.gl/forms/ndchcoZ8DRGJIuFg1.
+
+Do not forget that tomorrow from 6 pm - 7:30pm we will have also the conference “GIS for Good”: https://www.eventbrite.fr/e/billets-conference-gis-for-good-global-to-local-44670677198
+
+That’s all for the moment and we are really looking forward to meet you all tomorrow and have fun together :-)
 
 ## Swiss Data Cube Virtual Machine
 1. You need first to install Virtual Box: https://www.virtualbox.org
