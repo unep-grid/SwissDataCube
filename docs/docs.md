@@ -1,4 +1,8 @@
 # Documentation
+## installation
+[Arcsi installation](installation/arcsi_installation.md)
+
+
 ## bug fix
 [Fix fractional cover tool](bug_fix/fix_fractional_cover_tool.md)
 
