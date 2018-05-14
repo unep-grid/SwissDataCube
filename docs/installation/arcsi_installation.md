@@ -10,7 +10,9 @@ conda update conda --yes
 ## Install ARCSI
 ```
 conda create --name osgeoenv python=3.5 --yes
-source activate osgeoenvconda install -c conda-forge arcsi --yes
-conda update -c conda-forge --allarcsi.py -h # To test installation
+source activate osgeoenv
+conda install -c conda-forge arcsi --yes
+conda update -c conda-forge --all
+arcsi.py -h # To test installation
 source deactivate
 ```
