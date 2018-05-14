@@ -1,6 +1,8 @@
 # Documentation
 ## installation
-[Arcsi installation](installation/arcsi_installation.md)
+[ARCSI installation](installation/arcsi_installation.md)
+[SEN2COR installation](installation/sen2cor_installation.md)
+
 
 
 ## bug fix
