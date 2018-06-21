@@ -1,4 +1,9 @@
 # Documentation
+## installation
+[ARCSI installation](installation/arcsi_installation.md)
+
+[SEN2COR installation](installation/sen2cor_installation.md)
+
 ## bug fix
 [Fix fractional cover tool](bug_fix/fix_fractional_cover_tool.md)
 
