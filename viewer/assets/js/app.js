@@ -315,8 +315,22 @@ map = L.map("map", {
   zoom: 8,
   center: [46.78, 8.22],
   layers: [toto, boroughs, markerClusters, highlight],
-  zoomControl: false,
-  attributionControl: false
+  zoomControl: true,
+  attributionControl: true,
+  fullscreenControl: true,
+  fullscreenControlOptions: { // optional
+	  title:"Show me the fullscreen !",
+	  titleCancel:"Exit fullscreen mode",
+	  position: "bottomright"
+  }
+});
+
+// detect fullscreen toggling
+map.on('enterFullscreen', function(){
+	if(window.console) window.console.log('enterFullscreen');
+});
+map.on('exitFullscreen', function(){
+	if(window.console) window.console.log('exitFullscreen');
 });
 
 /* Layer control listeners that allow for a single markerClusters layer */
@@ -363,7 +377,7 @@ function updateAttribution(e) {
 map.on("layeradd", updateAttribution);
 map.on("layerremove", updateAttribution);
 
-var attributionControl = L.control({
+/*var attributionControl = L.control({
   position: "bottomright"
 });
 attributionControl.onAdd = function (map) {
@@ -372,10 +386,13 @@ attributionControl.onAdd = function (map) {
   return div;
 };
 map.addControl(attributionControl);
+*/
 
+/*
 var zoomControl = L.control.zoom({
   position: "bottomright"
 }).addTo(map);
+*/
 
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
