@@ -317,12 +317,12 @@ map = L.map("map", {
   layers: [toto, boroughs, markerClusters, highlight],
   zoomControl: true,
   attributionControl: true,
-  fullscreenControl: true,
-  fullscreenControlOptions: { // optional
-	  title:"Show me the fullscreen !",
+  fullscreenControl: true,	
+  fullscreenControlOptions: {
+	  title:"Enter fullscreen mode",
 	  titleCancel:"Exit fullscreen mode",
 	  position: "bottomright"
-  }
+  },
 });
 
 // detect fullscreen toggling
@@ -393,6 +393,9 @@ var zoomControl = L.control.zoom({
   position: "bottomright"
 }).addTo(map);
 */
+var mousePosition = L.control.mousePosition({
+	numDigits: 3
+}).addTo(map);
 
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
