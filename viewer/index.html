@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/app.css">
 	<link rel="stylesheet" href="leaflet/plugin/fullscreen/Control.FullScreen.css" />
 	<link rel="stylesheet" href="leaflet/plugin/coordinates/L.Control.MousePosition.css" />
+	<link rel="stylesheet" href="leaflet/plugin/extent/leaflet.defaultextent.css" />
 
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
@@ -60,10 +61,8 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
-                  <li><a href="data/subways.geojson" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Subway Lines</a></li>
-                  <li><a href="data/DOITT_THEATER_01_13SEPT2010.geojson" download="theaters.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Theaters</a></li>
-                  <li><a href="data/DOITT_MUSEUM_01_13SEPT2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Museums</a></li>
+                  <li><a href="https://geoserver.swissdatacube.org" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Snow Cover</a></li>
+                  <li><a href="https://geoserver.swissdatacube.org" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Landsat 8 Mosaic - 2016</a></li>
                 </ul>
             </li>
             <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Products</a></li>
@@ -80,7 +79,7 @@
               <h3 class="panel-title">Products
               <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
             </div>
-            <!--<div class="panel-body">
+            <div class="panel-body">
               <div class="row">
                 <div class="col-xs-8 col-md-8">
                   <input type="text" class="form-control search" placeholder="Filter" />
@@ -89,10 +88,16 @@
                   <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;Sort</button>
                 </div>
               </div>
-            </div>-->
+            </div>
             <div class="sidebar-table">
               <table class="table table-hover" id="feature-list">
-                <thead class="hidden">
+				  <tr>
+				  	<td>Snow Cover</td>
+				  </tr>
+				  <tr>
+				  	<td>Landsat 8 Mosaic - 2016</td>
+				  </tr>
+                <!--<thead class="hidden">
                   <tr>
                     <th>Icon</th>
                   <tr>
@@ -103,7 +108,7 @@
                     <th>Chevron</th>
                   <tr>
                 </thead>
-                <tbody class="list"></tbody>
+                <tbody class="list"></tbody>-->
               </table>
             </div>
           </div>
@@ -124,7 +129,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
+            <h4 class="modal-title">Swiss Data Cube - Map Viewer</h4>
           </div>
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified" id="aboutTabs">
@@ -134,25 +139,21 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
-                  <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
-                  <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
-                  <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
+                  <li><a href="#snowCover-tab" data-toggle="tab">Snow Cover</a></li>
+                  <li><a href="#ls8mosaic-tab" data-toggle="tab">Landsat 8 Mosaic - 2016</a></li>
                 </ul>
               </li>
             </ul>
             <div class="tab-content" id="aboutTabsContent">
               <div class="tab-pane fade active in" id="about">
-                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/bmcbride/bootleaf" target="_blank">GitHub</a>.</p>
+                <p>The Swiss Data Cube - Map Viewer allows visualizing, querying, and accessing the products produced by the <a href="http://www.swissdatacube.ch" target="_blank">Swiss Data Cube</a>.</p>
                 <div class="panel panel-primary">
                   <div class="panel-heading">Features</div>
                   <ul class="list-group">
-                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
-                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
-                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
-                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
-                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
+					<li class="list-group-item">Based on <a href="https://github.com/bmcbride/bootleaf">BootLeaf template</a>. ith <a href="http://getbootstrap.com/">Bootstrap</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/GRIDgva/SwissDataCube/tree/master/viewer" target="_blank">GitHub</a>.</li>
+                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>  
+                    <li class="list-group-item">Fully interoperable using OGC standards (e.g., WMS, WCS).</li>
+					<li class="list-group-item">Time-enabled tools: slider, side-by-side.</li>
                   </ul>
                 </div>
               </div>
@@ -191,17 +192,11 @@
                   </div>
                 </form>
               </div>
-              <div class="tab-pane fade" id="boroughs-tab">
-                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/pdf/bytes/nybbwi_metadata.pdf" target="_blank">New York City Department of City Planning</a></p>
+              <div class="tab-pane fade" id="snowCover-tab">
+                <p>Snow Cover map has been generated using the Snow Observations from Space (SOfS) algorithm. <a href="" target="_blank">Full Metadata</a>.</p>
               </div>
-              <div class="tab-pane fade" id="subway-lines-tab">
-                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
-              </div>
-              <div class="tab-pane fade" id="theaters-tab">
-                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-              <div class="tab-pane fade" id="museums-tab">
-                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+              <div class="tab-pane fade" id="ls8mosaic-tab">
+                <p>Landsat 8 Cloud-free Mosaic has been generated using the Custom Mosaic algorithm and all Landsat 8 observations fro 2016. <a href="" target="_blank">Full Metadata</a>.</p>
               </div>
             </div>
           </div>
@@ -300,6 +295,7 @@
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
 	<script src="leaflet/plugin/fullscreen/Control.FullScreen.js"></script>
 	<script src="leaflet/plugin/coordinates/L.Control.MousePosition.js"></script>
+	<script src="leaflet/plugin/extent/leaflet.defaultextent.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

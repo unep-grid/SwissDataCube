@@ -317,11 +317,12 @@ map = L.map("map", {
   layers: [toto, boroughs, markerClusters, highlight],
   zoomControl: true,
   attributionControl: true,
+  defaultExtentControl: true,
   fullscreenControl: true,	
   fullscreenControlOptions: {
 	  title:"Enter fullscreen mode",
 	  titleCancel:"Exit fullscreen mode",
-	  position: "bottomright"
+	  position: "topleft"
   },
 });
 
@@ -399,7 +400,7 @@ var mousePosition = L.control.mousePosition({
 
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
-  position: "bottomright",
+  position: "topleft",
   drawCircle: true,
   follow: true,
   setView: true,
