@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
-    <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+    <link rel="stylesheet" href="leaflet/plugin/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
     <link rel="stylesheet" href="assets/css/app.css">
 	<link rel="stylesheet" href="leaflet/plugin/fullscreen/Control.FullScreen.css" />
 	<link rel="stylesheet" href="leaflet/plugin/coordinates/L.Control.MousePosition.css" />
@@ -41,18 +41,20 @@
           <a class="navbar-brand" href="#">Swiss Data Cube - Viewer</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="search">
+          <!--<form class="navbar-form navbar-right" role="search">
             <div class="form-group has-feedback">
                 <input id="searchbox" type="text" placeholder="Search" class="form-control">
                 <span id="searchicon" class="fa fa-search form-control-feedback"></span>
             </div>
-          </form>
+          </form>-->
           <ul class="nav navbar-nav">
-            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
+            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-cubes white"></i>&nbsp;&nbsp;About</a></li>
             <li class="dropdown">
               <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Show Legend</a></li>
+				<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="storymaps-btn"><i class="fa fa-map"></i>&nbsp;&nbsp;Storymaps</a></li>
+				<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="webservices-btn"><i class="fa fa-server"></i>&nbsp;&nbsp;Webservices</a></li>
                 <li class="divider hidden-xs"></li>
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
               </ul>
@@ -65,6 +67,7 @@
                 </ul>
             </li>
             <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Products</a></li>
+			<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="help-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Help</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -78,7 +81,7 @@
               <h3 class="panel-title">Products
               <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
             </div>
-            <div class="panel-body">
+            <!--<div class="panel-body">
               <div class="row">
                 <div class="col-xs-8 col-md-8">
                   <input type="text" class="form-control search" placeholder="Filter" />
@@ -87,8 +90,9 @@
                   <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;Sort</button>
                 </div>
               </div>
-            </div>
-            <div class="sidebar-table">
+            </div>-->
+            <!--<div class="sidebar-table">-->
+			<div>
               <table class="table table-hover" id="feature-list">
                 <thead class="visible">
                   <tr>
@@ -122,7 +126,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Swiss Data Cube - Map Viewer</h4>
+            <h4 class="modal-title">Swiss Data Cube - Viewer</h4>
           </div>
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified" id="aboutTabs">
@@ -222,7 +226,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Login</h4>
+            <h4 class="modal-title">Help</h4>
           </div>
           <div class="modal-body">
             <form id="contact-form">
@@ -244,7 +248,95 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->    
+    </div><!-- /.modal --> 
+	
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Help</h4>
+          </div>
+          <div class="modal-body">
+	        <!-- Content Row -->
+	        <div class="row">
+	            <div class="col-lg-12">
+	                <div class="panel-group" id="accordion">
+	                    <div class="panel panel-default">
+	                        <div class="panel-heading">
+	                            <h4 class="panel-title">
+	                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Question 1?</a>
+	                            </h4>
+	                        </div>
+	                        <div id="collapseOne" class="panel-collapse collapse">
+	                            <div class="panel-body">
+	                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!-- /.panel -->
+	                    <div class="panel panel-default">
+	                        <div class="panel-heading">
+	                            <h4 class="panel-title">
+	                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Question 2?</a>
+	                            </h4>
+	                        </div>
+	                        <div id="collapseSeven" class="panel-collapse collapse">
+	                            <div class="panel-body">
+	                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!-- /.panel -->
+	                </div>
+	                <!-- /.panel-group -->
+	            </div>
+	            <!-- /.col-lg-12 -->
+	        </div>
+	        <!-- /.row -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal --> 
+	
+    <div class="modal fade" id="storymapsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Storymaps</h4>
+          </div>
+          <div class="modal-body">
+            <p>Storymaps goes here...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->  
+	
+    <div class="modal fade" id="webservicesModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Web services</h4>
+          </div>
+          <div class="modal-body">
+            <p>OGC-compliant web services are provided by the Swiss Data Cube <a href="https://geoserver.swissdatacube.org/" target="_blank">GeoServer</a></p>
+			<p>Web Map Service (WMS): <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities" target="_blank">GetCapabilities</a></p>
+			<p>Web Coverage Service (WCS): <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wcs&version=1.0.0&request=GetCapabilities" target="_blank">GetCapabilities</a></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -254,7 +346,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
-    <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+    <script src="leaflet/plugin/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
 	<script src="leaflet/plugin/fullscreen/Control.FullScreen.js"></script>
 	<script src="leaflet/plugin/coordinates/L.Control.MousePosition.js"></script>
 	<script src="leaflet/plugin/extent/leaflet.defaultextent.js"></script>

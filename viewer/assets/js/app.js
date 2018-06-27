@@ -22,6 +22,24 @@ $("#login-btn").click(function() {
   return false;
 });
 
+$("#help-btn").click(function() {
+  $("#helpModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#webservices-btn").click(function() {
+  $("#webservicesModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#storymaps-btn").click(function() {
+  $("#storymapsModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
 $("#list-btn").click(function() {
   animateSidebar();
   return false;
