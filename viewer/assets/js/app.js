@@ -97,8 +97,16 @@ var ch_borders = L.tileLayer.wms('http://preview.grid.unep.ch/geoserver/ows?', {
 
 map = L.map("map", {
   zoom: 8,
+  minZoom: 7,
+  maxZoom: 15,	
   center: [46.78, 8.22],
   layers: [toto, ch_borders],
+  maxBounds: [
+  	//south west
+	  [45.8294, 5.9670],
+    //north east 
+	  [47.8066, 10.4882]
+  ],	
   zoomControl: true,
   attributionControl: true,
   defaultExtentControl: true,
@@ -110,6 +118,7 @@ map = L.map("map", {
   },
 });
 
+map.bounds = [],
 // detect fullscreen toggling
 map.on('enterFullscreen', function(){
 	if(window.console) window.console.log('enterFullscreen');
