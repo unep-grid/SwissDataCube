@@ -90,9 +90,15 @@ var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcg
 })]);
 
 /* Overlay Layers */
-var ch_borders = L.tileLayer.wms('http://preview.grid.unep.ch/geoserver/ows?', {
-	layers: 'preview:World',
-	opacity: 0.5
+var ch_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+	layers: 'sdc:ch_border',
+	format: 'image/png',
+	transparent: 'true',
+});
+var canton_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+	layers: 'sdc:canton_borders',
+	format: 'image/png',
+	transparent: 'true'
 })
 
 map = L.map("map", {
@@ -178,7 +184,8 @@ var baseLayers = {
 
 var groupedOverlays = {
   "Borders": {
-    "Country": ch_borders
+    "Country": ch_borders,
+	  "Cantons": canton_borders  
   }
 };
 
