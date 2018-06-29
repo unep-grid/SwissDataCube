@@ -99,14 +99,20 @@ var canton_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoser
 	layers: 'sdc:canton_borders',
 	format: 'image/png',
 	transparent: 'true'
-})
+});
+var ch_mask = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+	layers: 'sdc:ch_mask',
+	format: 'image/png',
+	transparent: 'true',
+	opacity: 0.5
+});
 
 map = L.map("map", {
   zoom: 8,
   minZoom: 7,
   maxZoom: 15,	
   center: [46.78, 8.22],
-  layers: [toto, ch_borders],
+  layers: [toto, ch_mask, ch_borders],
   maxBounds: [
   	//south west
 	  [45.8294, 5.9670],
@@ -185,7 +191,8 @@ var baseLayers = {
 var groupedOverlays = {
   "Borders": {
     "Country": ch_borders,
-	  "Cantons": canton_borders  
+	"Cantons": canton_borders,
+	"Mask": ch_mask 
   }
 };
 
