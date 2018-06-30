@@ -50,10 +50,10 @@ input[type="radio"], input[type="checkbox"] {
   color: #FFFFFF;
 }
 .panel-heading{
-   width: 250px;
+   /*width: 500px;*/ /*modified by GG*/
 }
 .panel-body{
-  width: 250px;
+  /*width: 250px;*/ /*modified by GG*/
 }
 .feature-row {
   cursor: pointer;
