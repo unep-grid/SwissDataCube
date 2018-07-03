@@ -96,17 +96,19 @@ var ch_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/
 	layers: 'sdc:ch_border',
 	format: 'image/png',
 	transparent: 'true',
+	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
 var canton_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
 	layers: 'sdc:canton_borders',
 	format: 'image/png',
-	transparent: 'true'
+	transparent: 'true',
+	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
 var ch_mask = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
 	layers: 'sdc:ch_mask',
 	format: 'image/png',
 	transparent: 'true',
-	opacity: 0.5
+	opacity: 0.5,
 });
 
 /* Products WMS service - SDC GeoServer */
@@ -114,7 +116,7 @@ var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoser
 	layers: 'sdc:L8_CHmosaic_2016',
 	format: 'image/png',
 	transparent: 'true',
-	attribution: "Swiss Data Cube"
+	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
 });
 ch_mosaic_2016.setZIndex(3); //to ensure that data is loaded over base maps but behind borders data
 
