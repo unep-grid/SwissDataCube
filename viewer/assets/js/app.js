@@ -78,6 +78,7 @@ var toto = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?acc
 	id: 'mapbox.streets',
 	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
 });
+toto.setZIndex(1);
 var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
   maxZoom: 15,
 }), L.tileLayer.wms("http://raster.nationalmap.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_SCALE/ImageServer/WMSServer?", {
@@ -88,6 +89,7 @@ var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcg
   transparent: true,
   attribution: "Aerial Imagery courtesy USGS"
 })]);
+usgsImagery.setZIndex(2);
 
 /* Overlay Layers */
 var ch_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
@@ -107,12 +109,21 @@ var ch_mask = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows
 	opacity: 0.5
 });
 
+/* Products WMS service - SDC GeoServer */
+var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+	layers: 'sdc:L8_CHmosaic_2016',
+	format: 'image/png',
+	transparent: 'true',
+	attribution: "Swiss Data Cube"
+});
+ch_mosaic_2016.setZIndex(3); //to ensure that data is loaded over base maps but behind borders data
+
 map = L.map("map", {
   zoom: 8,
   minZoom: 7,
   maxZoom: 15,	
   center: [46.78, 8.22],
-  layers: [toto, ch_mask, ch_borders],
+  layers: [toto,ch_mask, ch_borders],
   maxBounds: [
   	//south west
 	  [45.8294, 5.9670],

@@ -62,7 +62,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="https://geoserver.swissdatacube.org" download="toto" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Snow Cover <small>ZIP | KML | PNG | PDF</small></a></li>
+                  <!--<li><a href="https://geoserver.swissdatacube.org" download="toto" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Snow Cover <small>ZIP | KML | PNG | PDF</small></a></li>-->
                   <li><a href="https://geoserver.swissdatacube.org" download="toto" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Landsat 8 Mosaic - 2016 <small>ZIP | KML | PNG | PDF</small></a></li>
                 </ul>
             </li>
@@ -95,15 +95,35 @@
 			<div>
               <table class="table table-hover" id="feature-list">
                 <thead class="visible">
-                  <tr>
+                  <!--<tr>
                     <td>Snow Cover</td>
+                  <tr>-->
                   <tr>
-                  <tr>
-                    <td>Landsat 8 Mosaic - 2016</td>
-                  <tr>
+                    <td>
+						<input type="checkbox" id="myCheck" onclick="myFunction()">&nbsp;Landsat 8 Mosaic - 2016
+						<p id="text" style="display:none">Opacity slider here...</p>
+						<script>
+							function myFunction() {
+							  // Get the checkbox
+							  var checkBox = document.getElementById("myCheck");
+							  // Get the output text
+							  var text = document.getElementById("text");
+
+							  // If the checkbox is checked, display the output text
+							  if (checkBox.checked == true){
+							    text.style.display = "block";
+								ch_mosaic_2016.addTo(map); //load WMS data
+							  } else {
+							    text.style.display = "none";
+								map.removeLayer(ch_mosaic_2016); //remove WMS data
+							  }
+							}
+						</script>
+					</td>	
+                  </tr>
                   <tr>
                     <th>New product...</th>
-                  <tr>
+                  </tr>
                 </thead>
                 <tbody class="list"></tbody>
               </table>
@@ -136,7 +156,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#snowCover-tab" data-toggle="tab">Snow Cover</a></li>
+                  <!--<li><a href="#snowCover-tab" data-toggle="tab">Snow Cover</a></li>-->
                   <li><a href="#ls8mosaic-tab" data-toggle="tab">Landsat 8 Mosaic - 2016</a></li>
                 </ul>
               </li>
