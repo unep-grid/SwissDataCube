@@ -154,6 +154,11 @@ var mousePosition = L.control.mousePosition({
 	numDigits: 3
 }).addTo(map);
 
+var scaleBar = L.control.scale({
+	position: "bottomleft",
+	imperial: false //remove miles
+}).addTo(map);
+
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
   position: "topleft",
