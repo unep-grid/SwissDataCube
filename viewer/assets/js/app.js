@@ -112,6 +112,7 @@ var ch_mask = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows
 });
 
 /* Products WMS service - SDC GeoServer */
+//Single Tile layer
 var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
 	layers: 'sdc:L8_CHmosaic_2016',
 	format: 'image/png',
@@ -120,6 +121,27 @@ var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoser
 });
 ch_mosaic_2016.setZIndex(3); //to ensure that data is loaded over base maps but behind borders data
 
+//Time-series raster
+var snow_CH = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+	layers: 'sdc:snow',
+	format: 'image/png',
+	transparent: 'true',
+	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
+});
+var tdWmsLayer = L.timeDimension.layer.wms(snow_CH);
+var timeDimension = new L.TimeDimension({
+	timeInterval: "2009-10-01/2009-12-01",
+	period: "P1M"
+});
+var timeDimensionControlOptions = {
+	timeDimension: timeDimension,
+	position:      'bottomright',
+	speedSlider: false,
+	timeSliderDragUpdate: false
+};
+var timeDimensionControl = new L.Control.TimeDimension(timeDimensionControlOptions);
+tdWmsLayer.setZIndex(4); //to ensure that data is loaded over base maps but behind borders data
+
 map = L.map("map", {
   zoom: 8,
   minZoom: 7,
@@ -127,10 +149,10 @@ map = L.map("map", {
   center: [46.78, 8.22],
   layers: [toto,ch_mask, ch_borders],
   maxBounds: [
-  	//south west
-	  [45.8294, 5.9670],
-    //north east 
-	  [47.8066, 10.4882]
+	  //south - west; min lat - min long
+	  [45.6755, 5.7349],
+	  //north - east; max lat - max long
+	  [47.9163, 10.6677]
   ],	
   zoomControl: true,
   attributionControl: true,
