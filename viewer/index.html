@@ -23,12 +23,6 @@
 	<link rel="stylesheet" href="leaflet/plugin/coordinates/L.Control.MousePosition.css" />
 	<link rel="stylesheet" href="leaflet/plugin/extent/leaflet.defaultextent.css" />
 	<link rel="stylesheet" href="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css" />
-
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon-152.png">
-    <link rel="icon" sizes="196x196" href="assets/img/favicon-196.png">
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   </head>
 
   <body>
@@ -82,6 +76,13 @@
 						<input type="checkbox" id="myCheck" onclick="showInfo()">&nbsp;<b>Landsat 8 Mosaic - 2016</b>&nbsp;<img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18">
 						<p id="text" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:L8_CHmosaic_2016" alt="raster data" title="raster data"></p>
 						<script>
+							//test if in the URL there is the name of the product
+							//workaround for URL hash library that doen't handle products correctly
+						    if(window.location.href.indexOf("Mosaic") > -1) {
+							    text.style.display = "block"; //open display
+								document.getElementById("myCheck").checked = true; //check
+						    }
+							//manage on-off visualization of layer
 							function showInfo() {
 							  // Get the checkbox
 							  var checkBox = document.getElementById("myCheck");
@@ -97,6 +98,7 @@
 								map.removeLayer(ch_mosaic_2016); //remove WMS data
 							  }
 							}
+							//update layer opacity
 							function updateOpacity(value) {
 								ch_mosaic_2016.setOpacity(value);
 							} 
@@ -120,15 +122,46 @@
 								map.timeDimension = timeDimension; //add time dimension
 								map.addControl(timeDimensionControl); //add time-series control
 								tdWmsLayer.addTo(map); //load WMS data
+								map.addEventListener('click', Identify); //add EventListener for querying data > popup
 							  } else {
 							    text2.style.display = "none";
 								map.removeLayer(tdWmsLayer); //remove layer
 								map.removeControl(timeDimensionControl); //remove time-series control
+								map.removeEventListener('click', Identify); //remove EventListener
 							  }
 							}
+							//update layer opacity
 							function updateOpacity2(value) {
 								tdWmsLayer.setOpacity(value);
 							} 
+							//GetTimeSeries data - popup as table and link to graph 
+							function Identify (e) {
+								var BBOX = map.getBounds().toBBoxString();
+								var WIDTH = map.getSize().x;
+								var HEIGHT = map.getSize().y;
+								var X = map.layerPointToContainerPoint(e.layerPoint).x;
+								var Y = map.layerPointToContainerPoint(e.layerPoint).y;
+								var URL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=sdc:L8_CHmosaic_2016&QUERY_LAYERS=sdc:L8_CHmosaic_2016&BBOX='+BBOX+'&FEATURE_COUNT=1&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&INFO_FORMAT=text%2Fhtml&SRS=EPSG%3A4326&X='+X+'&Y='+Y;
+								//var URL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetTimeSeries&FORMAT=image/jpeg&TIME=2009-10-01T00:00:00.000Z/2009-12-01T00:00:00.000Z&QUERY_LAYERS=sdc:snow&STYLES=&LAYERS=sdc:snow&INFO_FORMAT=text/csv&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=201&HEIGHT=201&BBOX=10.651,46.683,10.710,46.774';
+								$.ajax({
+									url:URL,
+									datatype: "html",
+									type: "GET",
+									success: function(data) {
+										var popup = new L.popup({
+											maxWidth: 300
+										});
+									    popup.setContent(data);
+										popup.setLatLng(e.latlng);
+										//popup.setContent(data+'<br><a href="https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetTimeSeries&FORMAT=image/jpeg&TIME=2009-10-01T00:00:00.000Z/2009-12-01T00:00:00.000Z&QUERY_LAYERS=sdc:snow&STYLES=&LAYERS=sdc:snow&INFO_FORMAT=image/png&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=201&HEIGHT=201&BBOX=10.651,46.683,10.710,46.774" target="_blank">View Graph</a>')
+										if(data === null){
+											alert("Hello! I am an alert box!!");
+										} else {
+											map.openPopup(popup);
+										}
+								     }
+								});
+							}
 						</script>
                     </td>
                   </tr>
@@ -305,8 +338,30 @@
           </div>
           <div class="modal-body">
             <p>OGC-compliant web services are provided by the Swiss Data Cube <a href="https://geoserver.swissdatacube.org/" target="_blank">GeoServer</a></p>
-			<p>Web Map Service (WMS): <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities" target="_blank">GetCapabilities</a></p>
-			<p>Web Coverage Service (WCS): <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wcs&version=1.0.0&request=GetCapabilities" target="_blank">GetCapabilities</a></p>
+			<p><i>Discovery services</i></p>
+			<ul>
+				<small>
+				<li>CSW <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=csw&version=2.0.2&request=GetCapabilities" target="_blank">2.0.2</a></li>
+				<li>OpeanSearch EO <a href="https://geoserver.swissdatacube.org/geoserver/oseo/description" target="_blank">1.0</a></li>
+				</small>
+			</ul>
+			<p><i>View services</i></p>
+			<ul>
+				<small>
+				<li>Web Map Service (WMS) with EO extension <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wms&version=1.1.1&request=GetCapabilities" target="_blank">1.1.1</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities" target="_blank">1.3.0</a></li>
+				<li>Web Map Tile Service (WMTS) <a href="https://geoserver.swissdatacube.org/geoserver/gwc/service/wmts?REQUEST=GetCapabilities" target="_blank">1.0.0</a></li>
+				<li>Tile Map Service (TMS) <a href="https://geoserver.swissdatacube.org/geoserver/gwc/service/tms/1.0.0" target="_blank">1.0.0</a></li>
+				<li>Web Map Tile Cached (WMS-C) <a href="https://geoserver.swissdatacube.org/geoserver/gwc/service/wms?request=GetCapabilities&version=1.1.1&tiled=true" target="_blank">1.1.1</a></li>
+				</small>
+			</ul>
+			<p><i>Download services</i></p>
+			<ul>
+				<small>
+				<li>Web Coverage Service (WCS) with EO extension <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wcs&version=1.0.0&request=GetCapabilities" target="_blank">1.0.0</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wcs&version=1.1.0&request=GetCapabilities" target="_blank">1.1.0</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wcs&version=1.1&request=GetCapabilities" target="_blank">1.1</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wcs&version=1.1.1&request=GetCapabilities" target="_blank">1.1.1</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=WCS&version=2.0.1&request=GetCapabilities" target="_blank">2.0.1</a></li>
+				<li>Web Feature Service (WFS) <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wfs&version=1.0.0&request=GetCapabilities" target="_blank">1.0.0</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities" target="_blank">1.1.0</a> / <a href="https://geoserver.swissdatacube.org/geoserver/ows?service=wfs&version=2.0.0&request=GetCapabilities" target="_blank">2.0.0</a></li>
+				</small>
+			</ul>
+			
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -330,6 +385,7 @@
 	<script src="leaflet/plugin/extent/leaflet.defaultextent.js"></script>
 	<script type="text/javascript" src="https://cdn.rawgit.com/nezasa/iso8601-js-period/master/iso8601.min.js"></script>
 	<script type="text/javascript" src="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.min.js"></script>
+	<script src="leaflet/plugin/leaflet-fullHash/leaflet-fullHash.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

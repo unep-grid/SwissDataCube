@@ -117,6 +117,7 @@ var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoser
 	layers: 'sdc:L8_CHmosaic_2016',
 	format: 'image/png',
 	transparent: 'true',
+	pointerCursor: true,
 	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
 });
 ch_mosaic_2016.setZIndex(3); //to ensure that data is loaded over base maps but behind borders data
@@ -142,6 +143,7 @@ var timeDimensionControlOptions = {
 var timeDimensionControl = new L.Control.TimeDimension(timeDimensionControlOptions);
 tdWmsLayer.setZIndex(4); //to ensure that data is loaded over base maps but behind borders data
 
+//Map object
 map = L.map("map", {
   zoom: 8,
   minZoom: 7,
@@ -174,10 +176,12 @@ map.on('exitFullscreen', function(){
 	if(window.console) window.console.log('exitFullscreen');
 });
 
+//MousePosition
 var mousePosition = L.control.mousePosition({
 	numDigits: 3
 }).addTo(map);
 
+//ScaleBar
 var scaleBar = L.control.scale({
 	position: "bottomleft",
 	imperial: false //remove miles
@@ -222,12 +226,13 @@ if (document.body.clientWidth <= 767) {
   var isCollapsed = false;
 }
 
+//Base Layers for background
 var baseLayers = {
-  //"Street Map": cartoLight,
   "Base Map": toto,
   "Aerial Imagery": usgsImagery
 };
 
+//other layers to overlay
 var groupedOverlays = {
   "Borders": {
     "Country": ch_borders,
@@ -236,6 +241,18 @@ var groupedOverlays = {
   }
 };
 
+//use for managing the URL hash
+var allMapLayers = {
+	"OSM": toto,
+  	"Satellite": usgsImagery,
+    "Country": ch_borders,
+	"Cantons": canton_borders,
+	"Mask": ch_mask,
+	"Mosaic": ch_mosaic_2016,
+}
+var urlParam = L.hash(map, allMapLayers);
+
+//Layer control
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
   collapsed: isCollapsed
 }).addTo(map);
