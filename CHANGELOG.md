@@ -3,10 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.0] - 2018-07-17
 ### Added
-- URL Hash to easily share 
+- URL Hash to easily share [Issue #8](https://github.com/GRIDgva/SwissDataCube/issues/8) 
 - Time-slider to visualize time-enabled maps; activated following the type of products published [Issue #6](https://github.com/GRIDgva/SwissDataCube/issues/6)
-- Opacity slider
-- maxBounds to restrict the view on Switzerland
+- Opacity slider [Issue #4](https://github.com/GRIDgva/SwissDataCube/issues/4)
+- maxBounds to restrict the view on Switzerland [Issue #3](https://github.com/GRIDgva/SwissDataCube/issues/3)
 - Zoom to default extent
 - Full screen mode
 - About section
@@ -22,5 +22,3 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 - TBD.
-
-https://github.com/GRIDgva/SwissDataCube/issues/6
