@@ -1,70 +1,26 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-## [1.0.0] - 2017-06-20
+## [1.0.0] - 2018-07-17
 ### Added
-- New visual identity by @tylerfortune8.
-- Version navigation.
-- Links to latest released version in previous versions.
-- "Why keep a changelog?" section.
-- "Who needs a changelog?" section.
-- "How do I make a changelog?" section.
-- "Frequently Asked Questions" section.
-- New "Guiding Principles" sub-section to "How do I make a changelog?".
-- Simplified and Traditional Chinese translations from @tianshuo.
-- German translation from @mpbzh & @Art4.
-- Italian translation from @azkidenz.
-- Swedish translation from @magol.
-- Turkish translation from @karalamalar.
-- French translation from @zapashcanon.
-- Brazilian Portugese translation from @aisamu.
-- Polish translation from @amielucha.
-- Russian translation from @aishek.
-- Czech translation from @h4vry.
-- Slovak translation from @jkostolansky.
+- URL Hash to easily share 
+- Time-slider to visualize time-enabled maps; activated following the type of products published [Issue #6](issues/6)
+- Opacity slider
+- maxBounds to restrict the view on Switzerland
+- Zoom to default extent
+- Full screen mode
+- About section
+- Data Download through WCS requests
+- Help section
+- Mouse Position
+- Scale Bar
+- Webservices; relevant links for Discovery (CSW, OpenSearch EO); View (WMS, WMTS, TMS, WMS-C); Download (WCS, WFS) services
 
 ### Changed
-- Start using "changelog" over "change log" since it's the common usage.
-- Start versioning based on the current English version at 0.3.0 to help
-translation authors keep things up-to-date.
-- Rewrite "What makes unicorns cry?" section.
-- Rewrite "Ignoring Deprecations" sub-section to clarify the ideal
-  scenario.
-- Improve "Commit log diffs" sub-section to further argument against
-  them.
-- Merge "Why can’t people just use a git log diff?" with "Commit log
-  diffs"
-- Fix typos in Simplified Chinese and Traditional Chinese translations.
-- Fix typos in Brazilian Portugese translation.
-- Fix typos in Turkish translation.
-- Fix typos in Czech translation.
-- Fix typos in Swedish translation.
-- Improve phrasing in French translation.
-- Fix phrasing and spelling in German translation.
+- TBD.
+
 
 ### Removed
-- Section about "changelog" vs "CHANGELOG".
+- TBD.
 
-## [0.3.0] - 2015-12-03
-### Added
-- RU translation from @aishek.
-- pt-BR translation from @tallesl.
-- es-ES translation from @ZeliosAriex.
-
-## [0.2.0] - 2015-10-06
-### Changed
-- Remove exclusionary mentions of "open source" since this project can
-benefit both "open" and "closed" source projects equally.
-
-## [0.1.0] - 2015-10-06
-### Added
-- Answer "Should you ever rewrite a change log?".
-
-### Changed
-- Improve argument against commit logs.
-- Start following [SemVer](http://semver.org) properly.
+https://github.com/GRIDgva/SwissDataCube/issues/6
