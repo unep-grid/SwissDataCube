@@ -119,12 +119,14 @@
 							  // If the checkbox is checked, display the output text
 							  if (checkBox2.checked == true){
 							    text2.style.display = "block";
+								document.getElementById('map').style.cursor = 'crosshair' //change cursor style to indicate that users can query the layer
 								map.timeDimension = timeDimension; //add time dimension
 								map.addControl(timeDimensionControl); //add time-series control
 								tdWmsLayer.addTo(map); //load WMS data
 								map.addEventListener('click', Identify); //add EventListener for querying data > popup
 							  } else {
 							    text2.style.display = "none";
+								document.getElementById('map').style.cursor = '' //reset to default cursor style
 								map.removeLayer(tdWmsLayer); //remove layer
 								map.removeControl(timeDimensionControl); //remove time-series control
 								map.removeEventListener('click', Identify); //remove EventListener
@@ -141,21 +143,22 @@
 								var HEIGHT = map.getSize().y;
 								var X = map.layerPointToContainerPoint(e.layerPoint).x;
 								var Y = map.layerPointToContainerPoint(e.layerPoint).y;
-								var URL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=sdc:L8_CHmosaic_2016&QUERY_LAYERS=sdc:L8_CHmosaic_2016&BBOX='+BBOX+'&FEATURE_COUNT=1&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&INFO_FORMAT=text%2Fhtml&SRS=EPSG%3A4326&X='+X+'&Y='+Y;
-								//var URL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetTimeSeries&FORMAT=image/jpeg&TIME=2009-10-01T00:00:00.000Z/2009-12-01T00:00:00.000Z&QUERY_LAYERS=sdc:snow&STYLES=&LAYERS=sdc:snow&INFO_FORMAT=text/csv&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=201&HEIGHT=201&BBOX=10.651,46.683,10.710,46.774';
+								var timeBound = '2009-10-01T00:00:00.000Z/2009-12-01T00:00:00.000Z';
+								//var URL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=sdc:L8_CHmosaic_2016&QUERY_LAYERS=sdc:L8_CHmosaic_2016&BBOX='+BBOX+'&FEATURE_COUNT=1&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&INFO_FORMAT=text%2Fhtml&SRS=EPSG%3A4326&X='+X+'&Y='+Y;
+								var csvURL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetTimeSeries&FORMAT=image/jpeg&TIME='+timeBound+'&QUERY_LAYERS=sdc:snow&STYLES=&LAYERS=sdc:snow&INFO_FORMAT=text/csv&FEATURE_COUNT=50&X='+X+'&Y='+Y+'&SRS=EPSG%3A4326&WIDTH='+WIDTH+'&HEIGHT='+HEIGHT+'&BBOX='+BBOX;
+								var pngURL = 'https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetTimeSeries&FORMAT=image/jpeg&TIME='+timeBound+'&QUERY_LAYERS=sdc:snow&STYLES=&LAYERS=sdc:snow&INFO_FORMAT=image/png&FEATURE_COUNT=50&X='+X+'&Y='+Y+'&SRS=EPSG%3A4326&WIDTH='+WIDTH+'&HEIGHT='+HEIGHT+'&BBOX='+BBOX;
 								$.ajax({
-									url:URL,
+									url:csvURL,
 									datatype: "html",
 									type: "GET",
 									success: function(data) {
 										var popup = new L.popup({
 											maxWidth: 300
 										});
-									    popup.setContent(data);
 										popup.setLatLng(e.latlng);
-										//popup.setContent(data+'<br><a href="https://geoserver.swissdatacube.org/geoserver/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetTimeSeries&FORMAT=image/jpeg&TIME=2009-10-01T00:00:00.000Z/2009-12-01T00:00:00.000Z&QUERY_LAYERS=sdc:snow&STYLES=&LAYERS=sdc:snow&INFO_FORMAT=image/png&FEATURE_COUNT=50&X=50&Y=50&SRS=EPSG%3A4326&WIDTH=201&HEIGHT=201&BBOX=10.651,46.683,10.710,46.774" target="_blank">View Graph</a>')
-										if(data === null){
-											alert("Hello! I am an alert box!!");
+										popup.setContent(data+'<br><a href="'+pngURL+'" target="_blank">View Graph</a>')
+										if(data.length <= 210){ //workaround used to know if there is data or not in the getfeatureinfo CSV document. Can be 658 for an html document.
+											//do not open popup because no values, outside the layer
 										} else {
 											map.openPopup(popup);
 										}

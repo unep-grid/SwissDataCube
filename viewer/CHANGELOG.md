@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 - Scale Bar
 - Webservices; relevant links for Discovery (CSW, OpenSearch EO); View (WMS, WMTS, TMS, WMS-C); Download (WCS, WFS) services
 - Basic print module [Issue #9](https://github.com/GRIDgva/SwissDataCube/issues/9) 
+- Query (with mouse pointer) a pixel and get a pop with time-series values & graph [Issue #5](https://github.com/GRIDgva/SwissDataCube/issues/5)
 
 ### Changed
 - N/A.
