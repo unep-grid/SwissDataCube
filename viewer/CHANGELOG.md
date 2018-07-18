@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Mouse Position
 - Scale Bar
 - Webservices; relevant links for Discovery (CSW, OpenSearch EO); View (WMS, WMTS, TMS, WMS-C); Download (WCS, WFS) services
+- Basic print module [Issue #9](https://github.com/GRIDgva/SwissDataCube/issues/9) 
 
 ### Changed
 - TBD.
