@@ -187,6 +187,17 @@ var scaleBar = L.control.scale({
 	imperial: false //remove miles
 }).addTo(map);
 
+//Print module
+var printModule = L.easyPrint({
+	title: 'Print',
+	position: 'topleft',
+	tileLayer: allMapLayers,
+	sizeModes: ['Current','A4Portrait', 'A4Landscape'],
+	filename: 'SwissDataCube_print',
+	exportOnly: true,
+	hideControlContainer: true
+}).addTo(map);
+
 /* GPS enabled geolocation control set to follow the user's location */
 var locateControl = L.control.locate({
   position: "topleft",
