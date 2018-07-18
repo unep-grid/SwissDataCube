@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2018-07-17
+## [1.0.0] - 2018-07-18
 ### Added
 - URL Hash to easily share [Issue #8](https://github.com/GRIDgva/SwissDataCube/issues/8) 
 - Time-slider to visualize time-enabled maps; activated following the type of products published [Issue #6](https://github.com/GRIDgva/SwissDataCube/issues/6)
@@ -18,8 +18,8 @@ All notable changes to this project will be documented in this file.
 - Basic print module [Issue #9](https://github.com/GRIDgva/SwissDataCube/issues/9) 
 
 ### Changed
-- TBD.
+- N/A.
 
 
 ### Removed
-- TBD.
+- N/A.
