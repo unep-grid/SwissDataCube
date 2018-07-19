@@ -10,4 +10,4 @@ The viewer allows:
   - Visualizing and Downloading time-series raster product layers
   - Generating graph for a given pixel of a time-series raster product layer
   - Access products in your own client with WMS & WCS standards
-  - In the (short) future, visualize dedicated storymaps
+  - Metadata support
