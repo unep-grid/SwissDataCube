@@ -12,6 +12,9 @@
 # under the License.
 
 # Import necessary stuff
+from IPython.display import clear_output
+import time
+import psutil
 import pandas as pd
 import numpy as np
 
@@ -19,6 +22,51 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 
 from utils.dc_utilities import clear_attrs, write_geotiff_from_xr
+
+
+def monit_sys(proc_time = 10):
+    """
+    Description:
+      Monitor and average CPU and RAM activity during a given time
+    -----
+    Input:
+      proc_time: monitoring time (in seconds, 10 by default)
+    Output:
+      on screen
+    """
+    
+    blocks_nb = 20 # length of the percentage bar
+    cpu_log = []
+    mem_log = []
+
+    for i in range(proc_time, 0, -1):
+        # get used CPU percentage values
+        cpu_pc = psutil.cpu_percent()
+        cpu_blocks = int(cpu_pc / 100 * blocks_nb)
+        cpu_log.append(cpu_pc)
+        
+        # get used RAM percentage
+        mem_pc = psutil.virtual_memory().percent
+        mem_blocks = int(mem_pc / 100 * blocks_nb)
+        mem_log.append(mem_pc)
+
+        # Print out instant values
+        clear_output(wait = True) # refresh display
+        print('Monitoring: wait %i seconds' % (i))
+        print('CPU\t[%s%s]' % ('#' * cpu_blocks, '-' * (blocks_nb - cpu_blocks)))
+        print('MEM\t[%s%s]' % ('#' * mem_blocks, '-' * (blocks_nb - mem_blocks)))
+
+        time.sleep(1)
+    
+    # Calulate average
+    cpu_avg = sum(cpu_log) / len(cpu_log)
+    mem_avg = sum(mem_log) / len(mem_log)
+    
+    # Print out averaged values
+    clear_output(wait = True)
+    print('%i seconds average:' % (proc_time))
+    print('CPU\t %5.1f%%' % (cpu_avg))
+    print('MEM\t %5.1f%%' % (mem_avg))
 
 
 def dt_export(dt, meas, fname, ext):
