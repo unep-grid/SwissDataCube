@@ -92,19 +92,20 @@ var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcg
 usgsImagery.setZIndex(2);
 
 /* Overlay Layers */
-var ch_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+var gsHost = appConfig.gsHost;
+var ch_borders = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:ch_border',
 	format: 'image/png',
 	transparent: 'true',
 	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
-var canton_borders = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+var canton_borders = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:canton_borders',
 	format: 'image/png',
 	transparent: 'true',
 	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
-var ch_mask = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+var ch_mask = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:ch_mask',
 	format: 'image/png',
 	transparent: 'true',
@@ -113,8 +114,9 @@ var ch_mask = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows
 
 /* Products WMS service - SDC GeoServer */
 //Single Tile layer
-var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+var ch_mosaic_2016 = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:L8_CHmosaic_2016',
+	//layers: 'sdc:LS8mosaicCH2018wgs84',
 	format: 'image/png',
 	transparent: 'true',
 	pointerCursor: true,
@@ -123,7 +125,7 @@ var ch_mosaic_2016 = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoser
 ch_mosaic_2016.setZIndex(3); //to ensure that data is loaded over base maps but behind borders data
 
 //Time-series raster
-var snow_CH = L.tileLayer.wms('https://geoserver.swissdatacube.org/geoserver/ows?', {
+var snow_CH = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:snow',
 	format: 'image/png',
 	transparent: 'true',
@@ -144,11 +146,16 @@ var timeDimensionControl = new L.Control.TimeDimension(timeDimensionControlOptio
 tdWmsLayer.setZIndex(4); //to ensure that data is loaded over base maps but behind borders data
 
 //Map object
+var mapZoom = appConfig.mapZoom; 
+var mapMinZoom = appConfig.mapMinZoom;
+var mapMaxZoom = appConfig.mapMaxZoom;
+var mapCenter = appConfig.mapCenter;
+
 map = L.map("map", {
-  zoom: 8,
-  minZoom: 7,
-  maxZoom: 15,	
-  center: [46.78, 8.22],
+  zoom: mapZoom,
+  minZoom: mapMinZoom,
+  maxZoom: mapMaxZoom,	
+  center: mapCenter,
   layers: [toto,ch_mask, ch_borders],
   maxBounds: [
 	  //south - west; min lat - min long

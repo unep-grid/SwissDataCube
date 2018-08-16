@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2018-07-18
+## [0.9.9] - 2018-08-16
 ### Added
 - URL Hash to easily share [Issue #8](https://github.com/GRIDgva/SwissDataCube/issues/8) 
 - Time-slider to visualize time-enabled maps; activated following the type of products published [Issue #6](https://github.com/GRIDgva/SwissDataCube/issues/6)
@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 - Webservices; relevant links for Discovery (CSW, OpenSearch EO); View (WMS, WMTS, TMS, WMS-C); Download (WCS, WFS) services
 - Basic print module [Issue #9](https://github.com/GRIDgva/SwissDataCube/issues/9) 
 - Query (with mouse pointer) a pixel and get a pop with time-series values & graph [Issue #5](https://github.com/GRIDgva/SwissDataCube/issues/5)
+- Initial implementation of a config file [Issue #7](https://github.com/GRIDgva/SwissDataCube/issues/7)
 
 ### Changed
 - N/A.
