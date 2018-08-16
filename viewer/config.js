@@ -6,5 +6,4 @@ var appConfig={
 	'mapMinZoom' : '7',
 	'mapMaxZoom' : '15',
 	'mapCenter' : [46.78, 8.22],
-	'mapBounds' : '[45.6755, 5.7349],[47.9163, 10.6677]'
 };
