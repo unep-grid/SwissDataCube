@@ -9,4 +9,5 @@ export XDG_RUNTIME_DIR=""
 jupyter notebook --no-browser --ip='*' --port='8080'
 ctrl-z
 bg
+disown
 ```
