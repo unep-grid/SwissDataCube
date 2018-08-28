@@ -97,18 +97,21 @@ var ch_borders = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:ch_border',
 	format: 'image/png',
 	transparent: 'true',
+	tiled: 'true',
 	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
 var canton_borders = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:canton_borders',
 	format: 'image/png',
 	transparent: 'true',
+	tiled: 'true',
 	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
 var ch_mask = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:ch_mask',
 	format: 'image/png',
 	transparent: 'true',
+	tiled: 'true',
 	opacity: 0.5,
 });
 
@@ -116,13 +119,43 @@ var ch_mask = L.tileLayer.wms(gsHost, {
 //Single Tile layer
 var ch_mosaic_2016 = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:L8_CHmosaic_2016',
-	//layers: 'sdc:LS8mosaicCH2018wgs84',
 	format: 'image/png',
 	transparent: 'true',
+	tiled: 'true',
 	pointerCursor: true,
 	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
 });
 ch_mosaic_2016.setZIndex(3); //to ensure that data is loaded over base maps but behind borders data
+
+var ch_snowcover_1995 = L.tileLayer.wms(gsHost, {
+	layers: 'sdc:clipch_95_051',
+	format: 'image/png',
+	transparent: 'true',
+	tiled: 'true',
+	pointerCursor: true,
+	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
+});
+ch_snowcover_1995.setZIndex(5); //to ensure that data is loaded over base maps but behind borders data
+
+var ch_snowcover_2005 = L.tileLayer.wms(gsHost, {
+	layers: 'sdc:clipch_05_171',
+	format: 'image/png',
+	transparent: 'true',
+	tiled: 'true',
+	pointerCursor: true,
+	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
+});
+ch_snowcover_2005.setZIndex(6); //to ensure that data is loaded over base maps but behind borders data
+
+var ch_snowcover_diff = L.tileLayer.wms(gsHost, {
+	layers: 'sdc:diff_all_CH',
+	format: 'image/png',
+	transparent: 'true',
+	tiled: 'true',
+	pointerCursor: true,
+	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
+});
+ch_snowcover_diff.setZIndex(7); //to ensure that data is loaded over base maps but behind borders data
 
 //Time-series raster
 var snow_CH = L.tileLayer.wms(gsHost, {
@@ -255,7 +288,7 @@ var groupedOverlays = {
   "Borders": {
     "Country": ch_borders,
 	"Cantons": canton_borders,
-	"Mask": ch_mask 
+	"Mask": ch_mask  
   }
 };
 
@@ -267,6 +300,9 @@ var allMapLayers = {
 	"Cantons": canton_borders,
 	"Mask": ch_mask,
 	"Mosaic": ch_mosaic_2016,
+	"Snow1995": ch_snowcover_1995,
+	"Snow2005": ch_snowcover_2005,
+	"SnowDiff": ch_snowcover_diff,
 }
 var urlParam = L.hash(map, allMapLayers);
 

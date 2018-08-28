@@ -51,7 +51,10 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="https://geoserver.swissdatacube.org" download="toto" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Landsat 8 Mosaic - 2016 <small>ZIP | KML | PNG | PDF</small></a></li>
+                  <li><a href="https://owncloud.unepgrid.ch/index.php/s/MB0grwgIDFAk5ak/download" download="toto" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Landsat 8 Mosaic - 2016</a></li>
+				  <li><a href="https://owncloud.unepgrid.ch/index.php/s/PptOkVmEUIIDZ4H/download" download="toto" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Snow Cover - 1995/2005</a></li>
+				  <li><a href="https://owncloud.unepgrid.ch/index.php/s/MDztjSZ6kvPRCxv/download" download="toto" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Snow Cover - 2005/2017</a></li>
+				  <li><a href="https://owncloud.unepgrid.ch/index.php/s/5Sj8fbVkn2yAb2y/download" download="toto" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Snow Cover - Difference</a></li>
                 </ul>
             </li>
             <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Products</a></li>
@@ -74,7 +77,7 @@
                 <thead class="visible">
                   <tr>
                     <td>
-						<input type="checkbox" id="myCheck" onclick="showInfo()">&nbsp;<b>Landsat 8 Mosaic - 2016</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:L8_CHmosaic_2016" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<input type="checkbox" id="myCheck" onclick="showInfo()">&nbsp;<b>Landsat 8 Mosaic - 2016</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:L8_CHmosaic_2016&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
 						<p id="text" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:L8_CHmosaic_2016" alt="raster data" title="raster data"></p>
 						<script>
 							//test if in the URL there is the name of the product
@@ -107,6 +110,108 @@
 					</td>	
                   </tr>
                   <tr>
+                    <td>
+						<input type="checkbox" id="myCheck2" onclick="showInfo2()">&nbsp;<b>Snow Cover - 1995/2005</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:clipch_95_051&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<p id="text2" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity2(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:clipch_95_051" alt="raster data" title="raster data"></p>
+						<script>
+							//test if in the URL there is the name of the product
+							//workaround for URL hash library that doen't handle products correctly
+						    if(window.location.href.indexOf("Snow1995") > -1) {
+							    text2.style.display = "block"; //open display
+								document.getElementById("myCheck2").checked = true; //check
+						    }
+							//manage on-off visualization of layer
+							function showInfo2() {
+							  // Get the checkbox
+							  var checkBox2 = document.getElementById("myCheck2");
+							  // Get the output text
+							  var text2 = document.getElementById("text2");
+
+							  // If the checkbox is checked, display the output text
+							  if (checkBox2.checked == true){
+							    text2.style.display = "block";
+								ch_snowcover_1995.addTo(map); //load WMS data
+							  } else {
+							    text2.style.display = "none";
+								map.removeLayer(ch_snowcover_1995); //remove WMS data
+							  }
+							}
+							//update layer opacity
+							function updateOpacity2(value) {
+								ch_snowcover_1995.setOpacity(value);
+							} 
+						</script>
+					</td>	
+                  </tr>
+                  <tr>
+                    <td>
+						<input type="checkbox" id="myCheck3" onclick="showInfo3()">&nbsp;<b>Snow Cover - 2005/2017</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:clipch_05_171&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<p id="text3" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity3(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:clipch_05_171" alt="raster data" title="raster data"></p>
+						<script>
+							//test if in the URL there is the name of the product
+							//workaround for URL hash library that doen't handle products correctly
+						    if(window.location.href.indexOf("Snow2005") > -1) {
+							    text2.style.display = "block"; //open display
+								document.getElementById("myCheck3").checked = true; //check
+						    }
+							//manage on-off visualization of layer
+							function showInfo3() {
+							  // Get the checkbox
+							  var checkBox3 = document.getElementById("myCheck3");
+							  // Get the output text
+							  var text3 = document.getElementById("text3");
+
+							  // If the checkbox is checked, display the output text
+							  if (checkBox3.checked == true){
+							    text3.style.display = "block";
+								ch_snowcover_2005.addTo(map); //load WMS data
+							  } else {
+							    text3.style.display = "none";
+								map.removeLayer(ch_snowcover_2005); //remove WMS data
+							  }
+							}
+							//update layer opacity
+							function updateOpacity3(value) {
+								ch_snowcover_2005.setOpacity(value);
+							} 
+						</script>
+					</td>	
+                  </tr>
+                  <tr>
+                    <td>
+						<input type="checkbox" id="myCheck4" onclick="showInfo4()">&nbsp;<b>Snow Cover - Difference</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:diff_all_CH&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<p id="text4" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity4(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:diff_all_CH" alt="raster data" title="raster data"></p>
+						<script>
+							//test if in the URL there is the name of the product
+							//workaround for URL hash library that doen't handle products correctly
+						    if(window.location.href.indexOf("SnowDiff") > -1) {
+							    text4.style.display = "block"; //open display
+								document.getElementById("myCheck4").checked = true; //check
+						    }
+							//manage on-off visualization of layer
+							function showInfo4() {
+							  // Get the checkbox
+							  var checkBox4 = document.getElementById("myCheck4");
+							  // Get the output text
+							  var text4 = document.getElementById("text4");
+
+							  // If the checkbox is checked, display the output text
+							  if (checkBox4.checked == true){
+							    text4.style.display = "block";
+								ch_snowcover_diff.addTo(map); //load WMS data
+							  } else {
+							    text4.style.display = "none";
+								map.removeLayer(ch_snowcover_diff); //remove WMS data
+							  }
+							}
+							//update layer opacity
+							function updateOpacity4(value) {
+								ch_snowcover_diff.setOpacity(value);
+							} 
+						</script>
+					</td>	
+                  </tr>
+                  <!--<tr>
                     <td>
 						<input type="checkbox" id="myCheck2" onclick="showInfo2()">&nbsp;<b>Snow Cover Time Series</b>&nbsp;<img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18">
 						<p id="text2" style="display:none">&nbsp;<small>Opacity:</small><input id="slide2" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity2(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:snow" alt="raster data" title="raster data"></p>
@@ -168,7 +273,7 @@
 							}
 						</script>
                     </td>
-                  </tr>
+                  </tr>-->
                 </thead>
                 <tbody class="list"></tbody>
               </table>
@@ -194,8 +299,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <!--<li><a href="#snowCover-tab" data-toggle="tab">Snow Cover</a></li>-->
                   <li><a href="#ls8mosaic-tab" data-toggle="tab">Landsat 8 Mosaic - 2016</a></li>
+				  <li><a href="#snowCover-tab" data-toggle="tab">Snow Cover</a></li>
                 </ul>
               </li>
             </ul>
@@ -215,8 +320,8 @@
                 </div>
               </div>
               <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
+                <p>The data provided on this site is for informational purposes only.</p>
+                <p>Absolutely no accuracy or completeness guarantee is implied or intended. Materials provided on this site are provided "as is", without warranty of any kind, either express or implied, including, without limitation, warranties of merchantability, fitness for a particular purpose and non-infringement.</p>
               </div>
               <div class="tab-pane fade" id="contact">
 				  You can contact by email directly from the <a href='http://www.swissdatacube.org/index.php/contact/' target='_blank'>Swiss Data Cube website</a>
@@ -251,10 +356,10 @@
                 </form>-->
               </div>
               <div class="tab-pane fade" id="snowCover-tab">
-                <p>Snow Cover map has been generated using the Snow Observations from Space (SOfS) algorithm. <a href="" target="_blank">Full Metadata</a>.</p>
+                <p>Snow Cover maps have been generated using the Snow Observations from Space (SOfS) algorithm. <br><a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:clipch_95_051&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank">Full Metadata 1995-2005</a> | <a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:clipch_05_171&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank">Full Metadata 2005-2017</a> | <a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:diff_all_CH&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank">Full Metadata Difference</a></p>
               </div>
               <div class="tab-pane fade" id="ls8mosaic-tab">
-                <p>Landsat 8 Cloud-free Mosaic has been generated using the Custom Mosaic algorithm and all Landsat 8 observations fro 2016. <a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:L8_CHmosaic_2016" target="_blank">Full Metadata</a>.</p>
+                <p>Landsat 8 Cloud-free Mosaic has been generated using the Custom Mosaic algorithm and all Landsat 8 observations fro 2016. <br><a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:L8_CHmosaic_2016&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank">Full Metadata</a>.</p>
               </div>
             </div>
           </div>
@@ -280,12 +385,12 @@
 	                    <div class="panel panel-default">
 	                        <div class="panel-heading">
 	                            <h4 class="panel-title">
-	                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Question 1?</a>
+	                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">How can I get help?</a>
 	                            </h4>
 	                        </div>
 	                        <div id="collapseOne" class="panel-collapse collapse">
 	                            <div class="panel-body">
-	                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+	                                You can visit the <a href="http://www.swissdatacube.org/index.php/help/" target="_blank">help section</a> of the Swiss Data Cube website and/or the <a href="https://github.com/GRIDgva/SwissDataCube/wiki/SDC-Viewer" target="_blank">GitHub wiki</a>.
 	                            </div>
 	                        </div>
 	                    </div>
@@ -293,12 +398,12 @@
 	                    <div class="panel panel-default">
 	                        <div class="panel-heading">
 	                            <h4 class="panel-title">
-	                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Question 2?</a>
+	                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Is the source code free?</a>
 	                            </h4>
 	                        </div>
 	                        <div id="collapseSeven" class="panel-collapse collapse">
 	                            <div class="panel-body">
-	                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+	                                Yes, the code is freely available on the Swiss Data Cube <a href="https://github.com/GRIDgva/SwissDataCube/tree/master/viewer" target="_blank">GitHub repository</a>. The code source is protected by a <a href="https://github.com/GRIDgva/SwissDataCube/blob/master/LICENSE.md" target="_blank">MIT license</a>.
 	                            </div>
 	                        </div>
 	                    </div>
@@ -311,7 +416,7 @@
 	        <!-- /.row -->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
