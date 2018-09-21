@@ -1,16 +1,6 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.0] - 2018-09-21
-### Added
-- N/A.
-
-### Changed
-- Enhanced metadata visualization. [Issue #10](https://github.com/GRIDgva/SwissDataCube/issues/10)
-
-### Removed
-- Removed mention of Storymaps in Features.
-
 ## [1.0.0] - 2018-09-10
 ### Added
 - URL Hash to easily share [Issue #8](https://github.com/GRIDgva/SwissDataCube/issues/8) 

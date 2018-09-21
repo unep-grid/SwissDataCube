@@ -77,7 +77,7 @@
                 <thead class="visible">
                   <tr>
                     <td>
-						<input type="checkbox" id="myCheck" onclick="showInfo()" value='layer1'>&nbsp;<b>Landsat 8 Mosaic - 2016</b>&nbsp;<a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="metadata-btn" onclick="showMetadata('1')"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<input type="checkbox" id="myCheck" onclick="showInfo()">&nbsp;<b>Landsat 8 Mosaic - 2016</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:L8_CHmosaic_2016&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
 						<p id="text" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:L8_CHmosaic_2016" alt="raster data" title="raster data"></p>
 						<script>
 							//test if in the URL there is the name of the product
@@ -111,7 +111,7 @@
                   </tr>
                   <tr>
                     <td>
-						<input type="checkbox" id="myCheck2" onclick="showInfo2()" value='layer2'>&nbsp;<b>Snow Cover - 1995/2005</b>&nbsp;<a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="metadata-btn2" onclick="showMetadata('2')"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<input type="checkbox" id="myCheck2" onclick="showInfo2()">&nbsp;<b>Snow Cover - 1995/2005</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:clipch_95_051&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
 						<p id="text2" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity2(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:clipch_95_051" alt="raster data" title="raster data"></p>
 						<script>
 							//test if in the URL there is the name of the product
@@ -145,7 +145,7 @@
                   </tr>
                   <tr>
                     <td>
-						<input type="checkbox" id="myCheck3" onclick="showInfo3()" value='layer2'>&nbsp;<b>Snow Cover - 2005/2017</b>&nbsp;<a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="metadata-btn3" onclick="showMetadata('3')"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<input type="checkbox" id="myCheck3" onclick="showInfo3()">&nbsp;<b>Snow Cover - 2005/2017</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:clipch_05_171&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
 						<p id="text3" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity3(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:clipch_05_171" alt="raster data" title="raster data"></p>
 						<script>
 							//test if in the URL there is the name of the product
@@ -179,7 +179,7 @@
                   </tr>
                   <tr>
                     <td>
-						<input type="checkbox" id="myCheck4" onclick="showInfo4()" value='layer2'>&nbsp;<b>Snow Cover - Change</b>&nbsp;<a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="metadata-btn4" onclick="showMetadata('4')"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
+						<input type="checkbox" id="myCheck4" onclick="showInfo4()">&nbsp;<b>Snow Cover - Change</b>&nbsp;<a href="https://geoserver.swissdatacube.org/geoserver/ows?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&id=sdc:diff_all_CH&outputSchema=http://www.isotc211.org/2005/gmd" target="_blank"><img src="assets/img/metadata.png" alt="metadata" title="metadata" width="18" height="18"></a>
 						<p id="text4" style="display:none">&nbsp;<small>Opacity:</small><input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity4(this.value)"><br>&nbsp;<small>Legend:</small>&nbsp;<img src="https://geoserver.swissdatacube.org/geoserver/sdc/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=sdc:diff_all_CH" alt="raster data" title="raster data"></p>
 						<script>
 							//test if in the URL there is the name of the product
@@ -315,6 +315,7 @@
                     <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>  
                     <li class="list-group-item">Fully interoperable using OGC standards (e.g., WMS, WCS) provided by <a href="http://geoserver.org" target="_blank">GeoServer</a>.</li>
 					<li class="list-group-item">Time-enabled tools: slider, side-by-side.</li>
+					<li class="list-group-item">Storymaps</li>
                   </ul>
                 </div>
               </div>
@@ -437,71 +438,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->  
-	
-    <div class="modal fade" id="metadataModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Metadata</h4>
-          </div>
-          <div class="modal-body">
-			<p id="mdTags"></p>
-			<p id="mdFull"></p>
-			<script>
-				function showMetadata(id) {
-					//get the correct csrURL from config file
-					var x = document.getElementById(id);
-					if (id == '1'){
-						cswURL = appConfig.cswLayer1;
-					} else if (id == '2') {
-						cswURL = appConfig.cswLayer2;
-					} else if (id == '3') {
-						cswURL = appConfig.cswLayer3;
-					} else {
-						cswURL = appConfig.cswLayer4;
-					}
-					//read the XML file
-				  var xhttp = new XMLHttpRequest();
-				  xhttp.onreadystatechange = function() {
-				    if (this.readyState == 4 && this.status == 200) {
-						myFunction(this);
-				    }
-				  };
-				  xhttp.open("GET", cswURL, true);
-				  xhttp.send();
-				}
-				//parse the XML file
-				function myFunction(xml) {
-				  var xmlDoc, keyWords;
-				  xmlDoc = xml.responseXML;
-				  fileIdentifier = xmlDoc.getElementsByTagName("gco:CharacterString")[0].childNodes[0].nodeValue;
-				  abstract = xmlDoc.getElementsByTagName("gco:CharacterString")[14].childNodes[0].nodeValue;
-				  westBL = xmlDoc.getElementsByTagName("gmd:westBoundLongitude")[0].childNodes[0].nodeValue;
-				  southBL = xmlDoc.getElementsByTagName("gmd:southBoundLatitude")[0].childNodes[0].nodeValue;
-				  eastBL = xmlDoc.getElementsByTagName("gmd:eastBoundLongitude")[0].childNodes[0].nodeValue;
-				  northBL = xmlDoc.getElementsByTagName("gmd:northBoundLatitude")[0].childNodes[0].nodeValue;
-				  reponsiblePartyContact = xmlDoc.getElementsByTagName("gco:CharacterString")[4].childNodes[0].nodeValue;
-				  positionNameContact = xmlDoc.getElementsByTagName("gco:CharacterString")[1].childNodes[0].nodeValue;
-				  organisationNameContact = xmlDoc.getElementsByTagName("gco:CharacterString")[2].childNodes[0].nodeValue;
-				  eMailContact = xmlDoc.getElementsByTagName("gco:CharacterString")[3].childNodes[0].nodeValue;
-				  keyWords = "";
-				  x = xmlDoc.getElementsByTagName("gco:CharacterString");
-				  for (i = 9; i < 13; i++) {
-				      keyWords += x[i].childNodes[0].nodeValue + " ";
-				  }
-				  //write the HTML code
-				  document.getElementById("mdTags").innerHTML = "<b>Layer Name:</b> "+fileIdentifier+"<br><b>Abstract:</b> "+abstract+"<br><b>Contact Name:</b> <a href='mailto:"+eMailContact+"'>"+reponsiblePartyContact+"</a> | <b>Position:</b> "+positionNameContact+" | <b>Organisation:</b> "+organisationNameContact+"<br><b>Extent:</b> North: "+northBL.substring(0,6)+" | South: "+southBL.substring(0,5)+" | East: "+eastBL.substring(0,6)+ " | West: "+westBL.substring(0,6)+"<br><b>Keywords:</b>  "+keyWords;
-				  document.getElementById("mdFull").innerHTML = "<a href="+cswURL+" target='_blank'>Full metadata XML response</a>"
-				}
-			</script>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 	
     <div class="modal fade" id="webservicesModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">

@@ -34,27 +34,6 @@ $("#webservices-btn").click(function() {
   return false;
 });
 
-$("#metadata-btn").click(function() {
-  $("#metadataModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-$("#metadata-btn2").click(function() {
-  $("#metadataModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-$("#metadata-btn3").click(function() {
-  $("#metadataModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-$("#metadata-btn4").click(function() {
-  $("#metadataModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-
 $("#storymaps-btn").click(function() {
   $("#storymapsModal").modal("show");
   $(".navbar-collapse.in").collapse("hide");
@@ -128,7 +107,6 @@ var canton_borders = L.tileLayer.wms(gsHost, {
 	tiled: 'true',
 	attribution: "<a href='https://data.geo.admin.ch' target='_blank'>geo.admin.ch</a> data"
 });
-
 var ch_mask = L.tileLayer.wms(gsHost, {
 	layers: 'sdc:ch_mask',
 	format: 'image/png',
