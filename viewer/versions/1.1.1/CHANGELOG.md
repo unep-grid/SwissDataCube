@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.1] - 2018-09-25
+## [1.1.1] - 2018-09-21
 ### Added
 - N/A.
 
