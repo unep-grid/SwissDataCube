@@ -99,7 +99,7 @@ def easy_export(data, prfx, ncortif):
     measurements = list(data.data_vars)
 
     if 'time' not in data.dims:
-        dt_export(data, measurements, '%s.nc' % (prfx), ncortif)
+        dt_export(data, measurements, '%s' % (prfx), ncortif)
     else:
         for index in range(len(data.time)):
             datime = int(pd.to_datetime(
