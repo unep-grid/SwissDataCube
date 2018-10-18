@@ -12,17 +12,81 @@
 # under the License.
 
 # Import necessary stuff
-from IPython.display import clear_output
+import os
+import logging
 import time
+
+from IPython.display import clear_output
+from datetime import datetime
 import psutil
 import pandas as pd
 import numpy as np
+import xarray as xr
 
 import matplotlib.pyplot as plt
 from matplotlib import colors
 
 from utils.dc_utilities import clear_attrs, write_geotiff_from_xr
 
+def printandlog(msg, logname = 'default.log', reset = False):
+    """
+    Description:
+      Function to print and write in a log file any info
+    -----
+    Input:
+      message: Message to print and log
+      reset: Reset the existing log if True, or append to existing log if False (default)
+      logname: Name of the logfile. It is strongly advised to defined it once in the configuration section
+    Output:
+      Print message in page and logname after date and time
+    -----
+    Usage:
+      printandlog('Started computing', 'any_name.log', reset = True)
+    """
+    logging.basicConfig(filename=logname,
+                        level=logging.INFO,
+                        format='%(asctime)s | %(message)s',
+                        datefmt='%Y-%m-%d %H:%M:%S')
+    if reset:
+        open(logname, 'w').close()
+    print('%s | %s' % (datetime.now(), msg))
+    logging.info(msg)
+    return
+
+def slc_to_cfmask(slc_da):
+    """
+    Description:
+      Aggregate a slc (Sentinel 2 mask standard) xarray.DataArray into cfmask (Landsat mask standard used by default by
+      ODC) xarray.DataArray, ready to be added into an xarray.Dataset as "cf_mask" variable.
+    -----
+    Input:
+      slc_da: slc xarray.DataArray extracted from a xarray.Dataset
+    Output:
+      cfmask xarray.DataArray
+    -----
+    Usage:
+      dataset_in['cf_mask'] = slc_to_cfmask(dataset_in.slc)
+    """
+
+    import sys
+
+    # Reclassify unsing a lookup table and indexing properties
+    # lookups = [(0,255), (1,255), (2,0), (3,2), (4,0), (5,0), (6,1), (7,255), (8,4), (9,4), (10,4), (11,3)]  # Conservative 7 -> 255 (unclassified -> fill)
+    lookups = [(0,255), (1,255), (2,0), (3,2), (4,0), (5,0), (6,1), (7,0), (8,4), (9,4), (10,4), (11,3)]    # 7 ->  0 (unclassified -> clear)
+
+    idx, val = np.asarray(lookups).T
+    lookup_array = np.zeros(idx.max() + 1)
+    lookup_array[idx] = val
+
+    cfmask = lookup_array[slc_da.values].astype(np.uint8)
+
+    # Add cfmask ndarray tinto the xarray.Dataset
+    cfmask = xr.DataArray(cfmask,
+                          coords={'latitude': slc_da['latitude'].values,
+                                  'longitude': slc_da['longitude'].values,
+                                  'time': slc_da['time'].values},
+                          dims=['time', 'latitude', 'longitude'])
+    return cfmask
 
 def monit_sys(proc_time = 10):
     """
@@ -34,7 +98,7 @@ def monit_sys(proc_time = 10):
     Output:
       on screen
     """
-    
+
     blocks_nb = 20 # length of the percentage bar
     cpu_log = []
     mem_log = []
@@ -44,7 +108,7 @@ def monit_sys(proc_time = 10):
         cpu_pc = psutil.cpu_percent()
         cpu_blocks = int(cpu_pc / 100 * blocks_nb)
         cpu_log.append(cpu_pc)
-        
+
         # get used RAM percentage
         mem_pc = psutil.virtual_memory().percent
         mem_blocks = int(mem_pc / 100 * blocks_nb)
@@ -57,11 +121,11 @@ def monit_sys(proc_time = 10):
         print('MEM\t[%s%s]' % ('#' * mem_blocks, '-' * (blocks_nb - mem_blocks)))
 
         time.sleep(1)
-    
+
     # Calulate average
     cpu_avg = sum(cpu_log) / len(cpu_log)
     mem_avg = sum(mem_log) / len(mem_log)
-    
+
     # Print out averaged values
     clear_output(wait = True)
     print('%i seconds average:' % (proc_time))
@@ -161,10 +225,10 @@ def easy_map(data, leg, bar_title, max_size = 10):
     Output:
       map
     """
-    
+
     # To be adapted
     max_pixels = 2000
-    
+
     # Estimate aspect
     pxx = data.sizes['longitude']
     pxy = data.sizes['latitude']
