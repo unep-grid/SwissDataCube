@@ -23,10 +23,63 @@ import pandas as pd
 import numpy as np
 import xarray as xr
 
+from ipyleaflet import (
+    Map,
+    basemaps,
+    basemap_to_tiles,
+    LayersControl,
+    Rectangle,
+    GeoJSON,
+    DrawControl
+)
+
 import matplotlib.pyplot as plt
 from matplotlib import colors
 
 from utils.dc_utilities import clear_attrs, write_geotiff_from_xr
+
+def draw_map():
+    """
+    Description:
+      Create an empty map to be used to draw a polygon or rectangle
+    -----
+    Input:
+      None
+    Output:
+      m: empty map ti interact with
+      dc: draw control
+    Usage:
+      Draw a polygon or a rectangle
+    """
+
+    # Location
+    center = [47, 8]
+    zoom = 7
+    m = Map(center=center, zoom=zoom)
+
+    # Layers
+    # http://leaflet-extras.github.io/leaflet-providers/preview/
+    esri = basemap_to_tiles(basemaps.Esri.WorldImagery)
+    m.add_layer(esri)
+    terrain = basemap_to_tiles(basemaps.Stamen.Terrain)
+    m.add_layer(terrain)
+    mapnik = basemap_to_tiles(basemaps.OpenStreetMap.Mapnik)
+    m.add_layer(mapnik)
+
+    m.add_control(LayersControl())
+
+    # Controls
+    dc = DrawControl(rectangle={'shapeOptions': {'color': '#0000FF'}},
+                     polygon={'shapeOptions': {'color': '#0000FF'}},
+                     marker={},
+                     polyline={},
+                     circle={},
+                     circlemarker={}
+                    )
+
+    m.add_control(dc)
+
+    return m, dc
 
 def printandlog(msg, logname = 'default.log', reset = False):
     """
