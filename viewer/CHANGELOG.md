@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2019-09-23
+### Added
+- Scale bar for each viewer of the Atlas
+
+### Changed
+- N/A.
+
+### Removed
+- N/A.
+
 ## [1.3.0] - 2019-09-20
 ### Added
 - New layer: Atlas of Changing Switzerland

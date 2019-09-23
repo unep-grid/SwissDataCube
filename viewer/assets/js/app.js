@@ -192,7 +192,8 @@ var ch_atlas = L.tileLayer.wms(gsHost, {
 	layers: 'atlas:sites',
 	format: 'image/png',
 	transparent: 'true',
-	tiled: 'true'
+	tiled: 'true',
+	attribution: "<a href='http://www.swissdatacube.ch' target='_blank'>Swiss Data Cube</a> data"
 });
 ch_atlas.setZIndex(8);
 

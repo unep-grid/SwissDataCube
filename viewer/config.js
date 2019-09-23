@@ -1,6 +1,6 @@
 var appConfig={
-    'appVersion' : '1.3.0',
-	'appVersionDate' : '[20.09.2019]',
+    'appVersion' : '1.3.1',
+	'appVersionDate' : '[23.09.2019]',
 	'gsHost' : 'https://geoserver.swissdatacube.org/geoserver/ows?',
 	'mapZoom' : '8',
 	'mapMinZoom' : '7',

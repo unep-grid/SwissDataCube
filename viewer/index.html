@@ -317,8 +317,12 @@
 											layers: [image1,image2],
 										}).setView(center,myObj.features[0].properties.SWIPE);
 										
-										
 									    L.control.sideBySide(image2, image1).addTo(swipemap);
+										L.control.scale({
+											position: "bottomleft",
+											imperial: false 
+										}).addTo(swipemap);
+										
 										setTimeout(function () { swipemap.invalidateSize() }, 800); //used to ensure loading
 										
 									
@@ -343,34 +347,23 @@
 										var sideMap2 = L.map('mapSide2', {
 								            layers: [sideL2],
 								            center: center,
-								            zoom: myObj.features[0].properties.ZOOMSIDE,
-											zoomControl: false
+								            zoom: myObj.features[0].properties.ZOOMSIDE
 										});
 
 								        sideMap1.sync(sideMap2);
 								        sideMap2.sync(sideMap1);
 										
+										L.control.scale({
+											position: "bottomleft",
+											imperial: false 
+										}).addTo(sideMap1);
+										L.control.scale({
+											position: "bottomleft",
+											imperial: false 
+										}).addTo(sideMap2);
+										
 										setTimeout(function () { sideMap1.invalidateSize() }, 800); //used to ensure loading
 										setTimeout(function () { sideMap2.invalidateSize() }, 800); //used to ensure loading
-										
-										// Control Layers
-										var overlays = {
-											"image1": image1,
-											"image2": image2
-										};
-										var overlays1 = {
-											"image1": sideL1,
-										
-										};
-										
-										var overlays2 = {
-											"image2": sideL2
-										};
-										L.control.layers(baseLayers,overlays).addTo(swipemap);
-										L.control.layers(baseLayers,overlays1).addTo(sideMap1);
-										L.control.layers(baseLayers,overlays2).addTo(sideMap2);
-										setPosition('topright');
-										collapsed: 'true'
 								    }
 								};
 								
