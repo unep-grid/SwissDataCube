@@ -1,0 +1,168 @@
+source_type: s2_ard_scene
+output_type: s2_l2a_switzerland
+
+description: Sentinel 2 ARD (L2A) scenes at 10 meter, 100km tile, Switzerland (EPSG:4326)
+
+location: '/datacube/ingested_data'
+file_path_template: 's2_ard_10m/s2_ard_10m_4326_{tile_index[0]}_{tile_index[1]}_{start_time}.nc'
+global_attributes:
+  title: Swiss Data Cube - Sentinel 2 ARD
+  summary: Sentinel 2 MSI ARD prepared by GRID-Geneva using dc_preproc scripts
+  source: Surface reflectance from dc_preproc
+  institution: GRID-Geneva
+  instrument: MSI
+  cdm_data_type: Grid
+  keywords: CH,GRID-Geneva,ESA,REFLECTANCE,ARD,Sentinel,MSI,EARTH SCIENCE
+  keywords_vocabulary: GCMD
+  platform: Sentinel_2
+  processing_level: L2A
+  product_version: '0.0.0'
+  product_suite: Sentinel 2 MSI
+  project: SDC Swiss Data Cube
+  coverage_content_type: physicalMeasurement
+  references: http://dx.doi.org/10.3334/ORNLDAAC/1146
+  license: https://creativecommons.org/licenses/by/4.0/
+  naming_authority: ESA
+  acknowledgment: Sentinel 2 are freely distributed by ESA (European Spatial Agency.
+
+ingestion_bounds: # Specified in Storage CRS coordinates. Will expand to tile boundaries.
+  left: 4.4
+  bottom: 45.12
+  right: 12.53
+  top: 48.4
+
+storage:
+  driver: NetCDF CF
+
+  crs: EPSG:4326
+  tile_size:
+          longitude: 1.135811667
+          latitude: 1.135811667
+  resolution:
+          longitude: 0.000113581166667
+          latitude: -0.000113581166667
+  chunking:
+      longitude: 200
+      latitude: 200
+      time: 1
+  dimension_order: ['time', 'latitude', 'longitude']
+
+fuse_data: copy
+
+measurements:
+    - name: coastal_aerosol
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B01_60m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.43-0.45 microns (Coastal aerosol)"
+          alias: "band_1"
+    - name: blue
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B02_10m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.46-0.52 microns (Blue)"
+          alias: "band_2"
+    - name: green
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B03_10m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.54-0.58 microns (Green)"
+          alias: "band_3"
+    - name: red
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B04_10m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.65-0.68 microns (Red)"
+          alias: "band_4"
+    - name: veg5
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B05_20m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.70-0.71 microns (Vegetation band 5)"
+          alias: "band_5"
+    - name: veg6
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B06_20m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.73-0.75 microns (Vegetation band 6)"
+          alias: "band_6"
+    - name: veg7
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B07_20m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.77-0.79 microns (Vegetation band 7)"
+          alias: "band_7"
+    - name: nir
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B08_10m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.78-0.90 microns (Near Infrared)"
+          alias: "band_8"
+    - name: narrow_nir
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B8A_20m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.86-0.88 microns (Narrow Near Infrared)"
+          alias: "band_8a"
+    - name: water_vapour
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B09_60m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 0.94-0.96 microns (Water Vapour)"
+          alias: "band_9"
+    - name: swir1
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B11_20m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 1.57-1.66 microns (Short-Wave Infrared)"
+          alias: "band_11"
+    - name: swir2
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'B12_20m'
+      zlib: True
+      attrs:
+          long_name: "Surface reflectance 2.10-1.28 microns (Short-Wave Infrared)"
+          alias: "band_12"
+    - name: slc
+      dtype: uint8
+      nodata: 0
+      resampling_method: nearest
+      src_varname: 'SLC_20m'
+      zlib: True
+      attrs:
+          long_name: "Scene classification"

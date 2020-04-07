@@ -1,0 +1,22 @@
+name: s1_l3comp_scene
+description: Sentinel 1 Gamma0 L3 12 day backscatter composite
+metadata_type: eo
+
+metadata:
+  format: {name: GeoTIFF}
+  instrument: {name: SAR}
+  platform: {code: SENTINEL_1_L3C}
+  product_type: gamma0
+
+measurements:
+- name: 'vh_gamma0'
+  aliases: [band_01, B01, Band1, vh, VH]
+  units: '1'
+  dtype: float32
+  nodata: -9999
+
+- name: 'vv_gamma0'
+  aliases: [band_02, B02, Band2, vv, VV]
+  units: '1'
+  dtype: float32
+  nodata: -9999

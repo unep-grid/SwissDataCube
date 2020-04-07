@@ -1,0 +1,72 @@
+source_type: s1_l3comp_scene
+output_type: s1_l3comp_swiss
+
+description: Sentinel-1 GAMMA0 12 day backscatter composite 90 metre, Switzerland, WGS84 projection (EPSG:4326)
+
+location: '/datacube/ingested_data'
+file_path_template: 'S1_IW_GRDH/S1_IW_GRDH_4326_{tile_index[0]}_{tile_index[1]}_{start_time}.nc'
+global_attributes:
+  title: UZH Departement of Geography S1 L3 12 day backscatter composite
+  summary: Sentinel-1 Synthetic Aperture Radar Gamma0 L3 backscatter composite prepared by University of Zurich, Department of Geography.
+  history: Refer to D. Small, 'Flattening Gamma Radiometric Terrain Correction for SAR Imagery', IEEE TGRS, 49(8), pp. 3081 to 3093, Aug. 2011. doi 10.1109/TGRS.2011.2120616 and D. Small, 'SAR backscatter multitemporal compositing via local resolution weighting', in IGARSS, 2012, Munich, Germany, pp. 4521 to 4524. doi 10.1109/IGARSS.2012.6350465
+  institution: UZH
+  instrument: SAR
+  cdm_data_type: Grid
+  keywords: ESA,SAR,EARTH SCIENCE
+  keywords_vocabulary: GCMD
+  platform: SENTINEL-1
+  processing_level: L3
+  product_version: '1.0.0'
+  product_suite: Sentinel-1
+  project: SDC
+  publisher_email: bruno.chatenoux@unepgrid.ch
+  publisher_name: GRID-Geneva
+  publisher_url: www.unepgrid.ch
+  coverage_content_type: physicalMeasurement
+  license: https://creativecommons.org/licenses/by/4.0/
+  naming_authority: GRID-Geneva
+  acknowledgment: Sentinel-1 data is provided by the European Space Agency on behalf of the European Commission via download. Contains modified Copernicus Sentinel data [2014-2019].
+
+ingestion_bounds:
+  left: 5.5
+  bottom: 44.5
+  right: 11.0
+  top: 48.5
+
+storage:
+  driver: NetCDF CF
+
+  crs: EPSG:4326
+  tile_size:
+          longitude: 0.5
+          latitude: 0.5
+  resolution:
+          longitude:  0.00083333333333
+          latitude: -0.00083333333333
+  chunking:
+      longitude: 200
+      latitude: 200
+      time: 1
+  dimension_order: ['time', 'latitude', 'longitude']
+
+measurements:
+    - name: vh
+      dtype: float32
+      nodata: -9999
+      units: '1'
+      resampling_method: nearest
+      src_varname: 'vh_gamma0'
+      zlib: True
+      attrs:
+          long_name: "L3 12 day backscatter composite Gamma0 VH (C-Band)"
+          alias: "VH"
+    - name: vv
+      dtype: float32
+      nodata: -9999
+      units: '1'
+      resampling_method: nearest
+      src_varname: 'vv_gamma0'
+      zlib: True
+      attrs:
+          long_name: "L3 12 day backscatter composite Gamma0 VV (C-Band)"
+          alias: "VV"

@@ -1,0 +1,95 @@
+name: s2_ard_scene
+description: Sentinel 2 L2A scenes processed using dc_preproc scripts developed by GRID-Geneva. 10, 20 and 60 m UTM based projection.
+metadata_type: eo
+
+metadata:
+    platform:
+        code: SENTINEL_2
+    instrument:
+        name: MSI
+    product_type: dc_preproc
+    format:
+        name: GeoTiff
+
+measurements:
+    - name: 'B01_60m'
+      aliases: [band_1, coastal_aerosol]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B02_10m'
+      aliases: [band_2, blue]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B03_10m'
+      aliases: [band_3, green]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B04_10m'
+      aliases: [band_4, red]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B05_20m'
+      aliases: [band_5, veg5]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B06_20m'
+      aliases: [band_6, veg6]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B07_20m'
+      aliases: [band_7, veg7]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B08_10m'
+      aliases: [band_8, nir]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B8A_20m'
+      aliases: [band_8a, narrow_nir]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B09_60m'
+      aliases: [band_9, water_vapour]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B11_20m'
+      aliases: [band_11, swir1]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'
+    - name: 'B12_20m'
+      aliases: [band_12, swir2]
+      dtype: int16
+      nodata: -9999
+      units: 'reflectance'    
+    - name: 'SLC_20m'
+      aliases: [slc]
+      dtype: uint8
+      nodata: 0
+      units: '1'
+      flags_definition: 
+        slc:
+          bits: [1,2,3,4,5,6,7,8,9,10,11]
+          description: Scene classification
+          values:
+            1: Saturated or defective pixel 
+            2: Dark features / Shadows
+            3: Cloud shadows
+            4: Vegetation
+            5: Not vegetated
+            6: Water
+            7: Unclassified
+            8: Cloud medium probability
+            9: cloud high probability
+            10: Thin cirrus
+            11: Snow or ice
