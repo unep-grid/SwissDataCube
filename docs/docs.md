@@ -4,6 +4,8 @@
 
 [SEN2COR installation](installation/sen2cor_installation.md)
 
+[OWS Addon installation](installation/ows_addon.md)
+
 ## bug fix
 [Fix fractional cover tool](bug_fix/fix_fractional_cover_tool.md)
 
