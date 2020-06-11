@@ -11,12 +11,12 @@ cd datacube-ows
 pip install --pre -r requirements.txt
 cd datacube_ows
 ```
-##Configuration
+## Configuration
 ows_cfg.py (Bruno’s file)
 ```
 "allowed_urls": ["http://sdc.unepgrid.ch/ows","http://sdc.unepgrid.ch:5000"],
 ```
-##Database update
+## Database update
 ```
 cd ~/Datacube/datacube-ows
 pip install PyCRS
@@ -31,13 +31,13 @@ python update_ranges.py –schema --role dc_user
 python update_ranges.py --multiproduct ls8_lasrc_swiss --no-calculate-extent
 ```
 
-##Webserver: Test with flask
+## Webserver: Test with flask
 export FLASK_APP=datacube_ows/ogc.py
 flask run --host=129.194.205.59
 
 http://sdc.unepgrid.ch:5000/
 
-##Gunicorn installation
+## Gunicorn installation
 ```
 pip install gunicorn
 ```
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 ```
 gunicorn --bind 0.0.0.0:5000 wsgi &
 
-##Apache proxying
+## Apache proxying
 ```
 a2enmod rewrite
 a2enmod proxy_http
@@ -85,9 +85,10 @@ add:
 Test: http://sdc.unepgrid.ch/ows/?time=2018-06-10&crs=EPSG:4326&transparent=true&format=image/png&exceptions=application/vnd.ogc.se_xml&styles=&tiled=true&service=WMS&version=1.3.0&request=GetMap&layers=ls8_lasrc_swiss&bbox=46.1,6.0,46.3,6.2&width=256&height=256&layers=ls8_lasrc_swiss
 
 
-##Start/stop procedure
+## Start/stop procedure
 Check if it works: ps -ef | grep gunicorn
 Check main page: http://sdc.unepgrid.ch/ows
+ 
  
 (this acces page is customizable: /home/localuser/Datacube/datacube-ows/datacube_ows/templates/index.html)
 
