@@ -90,7 +90,7 @@ Check if it works: ps -ef | grep gunicorn
 Check main page: http://sdc.unepgrid.ch/ows
  
  
-(this acces page is customizable: /home/localuser/Datacube/datacube-ows/datacube_ows/templates/index.html)
+(the acces page is customizable: /home/localuser/Datacube/datacube-ows/datacube_ows/templates/index.html)
 
 stop gunicorn: 
 ```
