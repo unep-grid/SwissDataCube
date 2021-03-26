@@ -25,10 +25,10 @@ In your Baobab home directory:
 ```
 $ mkdir py_libs
 $ cd py_libs
-$ git clone git@gitlab.unige.ch:scicos/dc_utilities.git
+$ git clone git@github.com:GRIDgva/SwissDataCube.git
 ```
 
-Then you'll see in the `dc_utils` fodler the utils files stored in two subfolders.
+Then you'll see in the `SwissDataCube/baobab` folder the utils files stored in two subfolders.
 
 ### Step 2: add the new module
 
@@ -37,7 +37,7 @@ The path of this file must be added to the `MODULEPATH` environment variable.
 
 To do so edit your `.bashrc` file stored in your home folder and add the following line at the end of the file:
 ```
-export MODULEPATH=${MODULEPATH}:${HOME}/py_libs/dc_utilities/modulefiles
+export MODULEPATH=${MODULEPATH}:${HOME}/py_libs/SDCUtils/SwissDataCube/baobab/py_src/
 ```
 if you used the clone/install directory from the previous step.
 Otherwise provide instead of `${HOME}/py_libs` the directory you used in step 1.
@@ -48,7 +48,7 @@ prepend-path PYTHONPATH {PUT HERE YOUR PATH TO dc_utilities/py_src/}
 ```
 to one containing the path to `dc_utils`, i.e:
 ```
-prepend-path PYTHONPATH /home/user/py_libs/dc_utilities/py_src/
+prepend-path PYTHONPATH /home/user/py_libs/SDCUtils/SwissDataCube/baobab/py_src/
 ```
 
 Once this is done, log out and log back in to Baobab.
@@ -58,7 +58,7 @@ Once it's done, check the `MODULEPATH` contains your path:
 ```
 $ echo $MODULEPATH
 /etc/modulefiles:/usr/share/modulefiles:/opt/modulefiles/Linux:/usr/share/lmod/
-lmod/modulefiles/Core:/opt/ebmodules/all/Core:/home/user/py_libs/dc_utilities/
+lmod/modulefiles/Core:/opt/ebmodules/all/Core:/home/user/py_libs/SDCUtils/SwissDataCube/baobab/
 modulefiles
 ```
 
