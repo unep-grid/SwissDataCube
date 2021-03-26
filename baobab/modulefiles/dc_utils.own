@@ -8,6 +8,6 @@ proc ModulesHelp { } {
 
 module-whatis "Loads Open and Swiss datacube utilities"
 
-# put here your path to dc_utilities/py_src/, e.g.
-# prepend-path PYTHONPATH /home/my_username/my_libs/dc_utilities/py_src/
+# put here your path to SwissDataCube/baobab/py_src/, e.g.
+# prepend-path PYTHONPATH /home/my_username/my_libs/SwissDataCube/baobab/py_src/
 prepend-path PYTHONPATH REPLACE_THIS_BY_YOUR_PATH
