@@ -44,7 +44,7 @@ Otherwise provide instead of `${HOME}/py_libs` the directory you used in step 1.
 
 Then in the `modulefiles/dc_utils.own` stored in the cloned repository, modify the line:
 ```
-prepend-path PYTHONPATH {PUT HERE YOUR PATH TO dc_utilities/py_src/}
+prepend-path PYTHONPATH REPLACE_THIS_BY_YOUR_PATH
 ```
 to one containing the path to `dc_utils`, i.e:
 ```
