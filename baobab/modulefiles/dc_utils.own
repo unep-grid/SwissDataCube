@@ -1,0 +1,13 @@
+#%Module########################################################################
+#
+# ODC and SDC utilities module file
+
+proc ModulesHelp { } {
+    puts stderr "Adds Open datacube and Swiss datacube utilities to the Python environment"
+}
+
+module-whatis "Loads Open and Swiss datacube utilities"
+
+# put here your path to dc_utilities/py_src/, e.g.
+# prepend-path PYTHONPATH /home/my_username/my_libs/dc_utilities/py_src/
+prepend-path PYTHONPATH REPLACE_THIS_BY_YOUR_PATH
