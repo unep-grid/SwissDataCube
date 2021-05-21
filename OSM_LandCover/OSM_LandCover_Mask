@@ -1,0 +1,146 @@
+"""
+Apply masking of satellite imaging with OSM data sets
+Created: Claudia Roeoesli, UZH RSL Zürich (2020)
+Implemented Bruno Chatenoux into SDC , Univ. Geneva 2020
+"""
+
+def tif_to_da(tif_path, ds):
+    """
+    convert given geotiff into a xarray.DataArray fitting a given xarray.Dataset.
+
+    Parameters
+    ----------
+    tif: string
+        path to geotiff to convert
+    ds: xarray.Dataset
+    """
+    with rasterio.open(tif_path, driver='GTiff') as dst:
+        data_np_arr = dst.read()
+        check_overlay(ds, dst)
+        dst.close()
+    da = xr.DataArray(data_np_arr, dims=['time', 'latitude', 'longitude'])
+    da = da.assign_coords(time = range(data_np_arr.shape[0]),
+                          latitude=ds.latitude,
+                          longitude=ds.longitude)
+    da = da.drop('time').squeeze()
+    return da.where(da != 0)
+
+def osm_to_shp(ds, wd = './', plot = False):
+    """
+    download OSM streets and buildings and convert them to separate shapefile.
+
+    Parameters
+    ----------
+    ds: xarray.Dataset
+    wd (optional, notebook directory by default): string
+        working directory to save shapefile and tif
+    plot (optional, False by default): Boolean
+        plot streets and buildings
+    """
+
+    # create or empty working directory
+    if wd != './':
+        if os.path.exists(wd):
+            shutil.rmtree(wd)
+        os.makedirs(wd)
+
+    # get ds geographical information
+    geoinfo_dict = get_ds_geoinfo(ds)
+
+    # generate AOI shapefile
+    PolygonS = Polygon([[geoinfo_dict['minx'], geoinfo_dict['miny']],
+                        [geoinfo_dict['minx'], geoinfo_dict['maxy']],
+                        [geoinfo_dict['maxx'],geoinfo_dict['maxy']],
+                        [geoinfo_dict['maxx'],geoinfo_dict['miny']]])
+    gpd.GeoDataFrame(pd.DataFrame(['p1'], columns = ['geom']),
+         crs = {'init':'epsg:4326'},
+         geometry = [PolygonS]).to_file(wd + '/aoi_limited.shp')
+
+    # Get OSM streets and buildings
+    # streets
+    try:
+        # "TypeError: unhashable type: 'dict'" when using 'ox.graph_from_polygon'
+        streets = ox.graph_from_bbox(max_lat, min_lat, max_lon, min_lon,
+                                   network_type='drive',
+                                   retain_all=True, truncate_by_edge = True)
+        assert streets.size() > 0, 'No road within the AOI !'
+        nodes, edges = ox.graph_to_gdfs(streets)
+        ox.save_graph_shapefile(streets, folder = wd, filename='streets')
+    except:
+        print('No streets within the AOI !')
+    # building
+    try:
+        buildings = ox.footprints.footprints_from_polygon(PolygonS,
+                                                          footprint_type='building',
+                                                          retain_invalid = False)
+        ox.save_load.save_gdf_shapefile(buildings, folder = wd, filename='buildings')
+    except:
+        print('No buildings within the AOI !')
+
+#     # Save as shapefile
+#     ox.save_graph_shapefile(streets, folder = wd, filename='streets')
+#     ox.save_load.save_gdf_shapefile(buildings, folder = wd, filename='buildings')
+    # optionaly plot
+    if plot:
+        fig, ax = plt.subplots(figsize=(12,8))
+        if edges:
+            edges.plot(ax=ax, linewidth=1, edgecolor='black')
+        if buildings:
+            buildings.plot(ax=ax, facecolor='gray')
+
+    return 0
+
+def osm_to_da(ds, wd = './', size_px = 0, all_touch = False):
+    """
+    download OSM streets and buildings and convert them into a xarray.DataArray fitting a given
+    xarray.Dataset (optionally a buffer can be applied on streets layer).
+
+    Parameters
+    ----------
+    ds: xarray.Dataset
+    wd (optional, notebook directory by default): string
+        working directory to save shapefile and tif
+    size_px (optional, 0 by default): float
+        buffer size based on <ds> pixel size (e.g. 1 * S2 ds = 10 m)
+    alltouch (optional, False by default): Boolean
+        ALL_TOUCHED option so that all pixels touched will be rasterized
+    """
+    osm_to_shp(ds, wd)
+    streets_name = 'streets/edges/edges.shp'
+    if size_px != 0:
+        buffer_shp(wd + streets_name, ds, size_px)
+        streets_name = '/streets/edges/buffer.shp'
+    streets = shp_to_da(wd + streets_name, ds, alltouch = all_touch)
+    buildings = shp_to_da(wd + '/buildings/buildings.shp', ds, alltouch = all_touch)
+    return buildings.combine_first(streets)
+
+def stbu_to_da(st_tif, bu_tif, ds):
+    """
+    convert streets and building geotiff processed with osm_to_da function into a xarray.DataArray.
+
+    Parameters
+    ----------
+    st_tif & bu_tif: string
+        path to streets and buildings geotiff to convert
+    ds: xarray.Dataset
+        dataset used to generate the geotiffs
+    """
+    assert (os.path.exists(st_tif)),\
+           'path <st_tif> path is not valid !'
+    assert (os.path.exists(bu_tif)),\
+           'path <bu_tif> path is not valid !'
+
+    buildings = tif_to_da(bu_tif, ds)
+    streets = tif_to_da(st_tif, ds)
+    return buildings.combine_first(streets)
+
+
+# Apply OSM mask if already generated, otherwise download and generate it
+work_dir = './osm/'
+try:
+    osm_da = stbu_to_da(work_dir + '/buildings/buildings.tif', work_dir + '/streets/edges/buffer.tif', dataset_clean)
+except:
+    osm_da = osm_to_da(dataset_clean, work_dir, size_px = 1, all_touch = True)
+
+osm_da.plot()
+dataset_clean = dataset_clean.where(osm_da.fillna(0) == 0)
